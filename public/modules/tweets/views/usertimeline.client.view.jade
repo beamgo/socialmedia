@@ -1,0 +1,43 @@
+.container.body(data-ng-controller='UserTimelineController')
+  .left-panel
+    .profile
+      .header
+        .name {{ profile.name }}
+        .screen-name @{{ profile.screenName}}
+        .is-followed(data-ng-if='profile.isFollowed')
+          | follows you
+      // /.header
+      html.
+        <div class="detail">
+          <a class="DashboardProfileCard-avatarLink u-inlineBlock" title="Beamnedict" tabindex="-1" aria-hidden="true" rel="noopener" >
+            <img class="DashboardProfileCard-avatarImage js-action-profile-avatar" src="https://pbs.twimg.com/profile_images/378800000482049918/d7b7493e9066f7df82d90c112a0c0501_bigger.jpeg">
+          </a>
+          <div class="col">
+            <div class="text">post</div>
+            <div class="number">{{ profile.tweetCount}}</div>
+          </div>
+          <div class="col">
+            <div class="text">Followers</div>
+            <div class="number">{{ profile.followerCount }}</div>
+          </div>
+          <div class="col">
+            <div class="text">Following</div>
+            <div class="number">{{ profile.followingCount }}</div>
+          </div>
+        </div>
+      .action.last-section
+        input.btn.btn-default.btn-lg(type='button', value='Follow', data-ng-click='follow(profile.screenName)', data-ng-if='!profile.isFollowing')
+        input.btn.btn-primary.btn-lg(type='button', value='Unfollow', data-ng-click='unfollow(profile.screenName)', data-ng-if='profile.isFollowing')
+      // /.detail
+    // /.border-box .profile
+  .main-panel
+    .tweet(data-ng-repeat="tweet in tweets | orderBy: '-tweetTime'", data-ng-class="{'first-item' : $first}")
+      .name
+        | {{ tweet.name }}
+      .screen-name
+        |  @{{ tweet.screenName }}
+      .tweet-text
+        | {{ tweet.tweetText }}
+      .action
+        .reply(data-ng-click="replyTo(tweet.screenName)")
+          i.fa.fa-reply

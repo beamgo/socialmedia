@@ -1,0 +1,31 @@
+div(data-ng-controller="MeController")
+  .container.body
+    .left-panel
+      .profile
+        .header
+          .name {{ profile.name }}
+          .screen-name @{{ profile.screenName }}
+        // /.header
+        .detail.last-section
+          .col
+            .text Tweets
+            .number {{ profile.tweetCount }}
+          .col
+            .text Followers
+            .number {{ profile.followerCount }}
+          .col
+            .text Followings
+            .number {{ profile.followingCount }}
+        // /.detail
+      // /.border-box .profile
+    .main-panel
+      .tweet(data-ng-repeat="tweet in tweets | orderBy: '-tweetTime'", data-ng-class="{'first-item' : $first}")
+        .name
+          | {{ tweet.name }}
+        .screen-name
+          |  @{{ tweet.screenName }}
+        .tweet-text
+          | {{ tweet.tweetText }}
+        .action
+          .reply(data-ng-click="replyTo(tweet.screenName)")
+            i.fa.fa-reply

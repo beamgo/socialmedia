@@ -1,0 +1,62 @@
+html.
+  <div class="container">
+  <br>
+  <br>
+  <br>
+  <h3 class="pageName">ลงทะเบียน : คนพิการ</h2>
+  
+  <div class="signup-form" data-ng-controller="AuthenticationController">
+    <div class="title-label">กรุณากรอกข้อมูลผู้ใช้งาน</div>
+    <form name="userForm" data-ng-submit="signup()" novalidate="novalidate" autocomplete="off">
+      <label class="col-md-4 labelRequest control-label">ชื่อผู้ใช้งาน*</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="text" placeholder="Username" data-ng-model="credentials.username"/>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">ชื่อ*</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="text" placeholder="Firstname" data-ng-model="credentials.firstName"/>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">นามสกุล*</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="text" placeholder="Lastname" data-ng-model="credentials.lastName"/>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">อีเมล์*</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="email" placeholder="youremail@email.com" data-ng-model="credentials.email"/>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">รหัสผ่าน*</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="password" placeholder="Password" data-ng-model="credentials.password"/>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">ยืนยันรหัสผ่าน*</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="password" placeholder="Password" />
+      </div>
+      <br><br>
+
+
+      <label class="col-md-4 labelRequest control-label">เลขบัตรประจำตัวคนพิการ/เลขบัตรประจำตัวประชาชน*</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="password"  />
+      </div>
+      <br><br>
+
+     
+
+      <div class="form-group text-right">
+        <button class="btn btn-primary" type="submit">Sign up</button>
+      </div>
+      <div class="text-center text-danger" data-ng-show="error"><strong data-ng-bind="error"></strong></div>
+    </form>
+  </div>
+  </div>
