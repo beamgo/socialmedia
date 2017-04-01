@@ -66,7 +66,23 @@ angular.module('tweets').controller('FeedController', [
                 $scope.error = response.message;
             });
         };
+        
+        $http.get('/uploads').then(function(response){
+            console.log(response.data);
+            $scope.uploads = response.data;
+          });
 
+          $scope.submit = function(){
+            Upload.upload({
+              url: '/uploads',
+              method: 'post',
+              data: $scope.upload
+            }).then(function (response) {
+              console.log("file"+response.data.file.path);
+              $scope.uploads.push(response.data);
+              $scope.upload = {};
+            })
+          };
         $scope.replyTo = function(screenName) {
             var modalInstance = $modal.open({
                 animation: true,
@@ -114,22 +130,7 @@ angular.module('tweets').controller('FeedController', [
                 video[0].pause(); // video.play()
        };
 
-       $http.get('/uploads').then(function(response){
-        console.log(response.data);
-        $scope.uploads = response.data;
-      });
-
-      $scope.submit = function(){
-        Upload.upload({
-          url: '/uploads',
-          method: 'post',
-          data: $scope.upload
-        }).then(function (response) {
-          console.log(response.data);
-          $scope.uploads.push(response.data);
-          $scope.upload = {};
-        })
-      };
+       
 
     }
     

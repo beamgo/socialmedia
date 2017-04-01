@@ -26,8 +26,9 @@ router.get('/:uuid/:filename', function (req, res, next) {
     'file.filename': req.params.uuid,
     'file.originalname': req.params.filename
   }, function (err, upload) {
+    console.log("err"+err);
 
-    if (err) next(err);
+    if (err)  next(err);
     else {
       res.set({
         "Content-Disposition": 'attachment; filename="' + upload.file.originalname + '"',

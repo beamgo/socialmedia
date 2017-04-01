@@ -32,7 +32,7 @@ html.
          
         
          hh
-           <div >
+           <!--<div >
           <form ng-submit="submit()">
             <legend>Upload a new file here:</legend>
             <label for="name">Name:</label>
@@ -48,10 +48,11 @@ html.
           <ul>
             <li ng-repeat="upload in uploads">
               <p>{{upload.name}}</p>
+              <img class="thumb" ng-src='{{upload.file.path + "/" + upload.file.originalname}}'></img>
               <a ng-href='{{upload.file.path + "/" + upload.file.originalname}}'>{{upload.file.originalname}}</a>
             </li>
           </ul>
-        </div>
+        </div>-->
            <!-- <iframe width="854" height="480" src="https://www.youtube.com/embed/yAvpq98sAx0" frameborder="0" allowfullscreen></iframe>-->
 
 
@@ -62,11 +63,30 @@ html.
       </div>
       <div class="main-panel">
         <div class="new-tweet first-item">
-          <form class="form-horizontal">
+          <form class="form-horizontal" ng-submit="submit()">
             <div id="column-1" class="post">
               <div class="tweet-text" style="height: 100px; width:538px;">
-                  <input class="form-control" style="height: 100px; width:538px;" id="tweetText" type="text" placeholder="What's happening" data-ng-model="tweetText"/>
+                  <input class="form-control" style="height: 50px; width:538px;" id="tweetText" type="text" placeholder="What's happening" data-ng-model="tweetText"/>
+                  <div >
+                    
+                      
+                      
+                      <br/>
+                      <label for="file">File:</label>
+                      <input type="file" name="file" id="file" ng-model="upload.file" ngf-select ngf-max-size="25MB" required/>
+                      <br/>
+                      <input type="submit" value="Submit"/>
+                    
 
+                    <h2>All uploads are here:</h2>
+                    <ul>
+                      <li ng-repeat="upload in uploads">
+                        <p>{{upload.name}}</p>
+                        <img class="thumb" ng-src='{{upload.file.path + "/" + upload.file.originalname}}'></img>
+                        <a ng-href='{{upload.file.path + "/" + upload.file.originalname}}'>{{upload.file.originalname}}</a>
+                      </li>
+                    </ul>
+                  </div>
                 
                   <!--<div ng-repeat="step in stepsModel">
                     <img class="thumb" ng-src="{{step}}" controls></img>
@@ -74,8 +94,6 @@ html.
                   </div>
                   <input type='file' ng-model-instant onchange="angular.element(this).scope().imageUpload(event)" multiple />-->
                   
-              
-                  <input class="form-control" style="height: 100px; width:538px;" id="tweetPic" type="text" placeholder="pic" data-ng-model="tweetPic"/>
                 </div>
             </div>
             <br><br>
