@@ -1,5 +1,5 @@
 html.
-  <div class="container">
+  <div style="width: 100%; max-width: 1117px;" class="container">
   <br>
   <br>
   <br>
@@ -47,11 +47,18 @@ html.
 
       <label class="col-md-4 labelRequest control-label">เลขบัตรประจำตัวคนพิการ/เลขบัตรประจำตัวประชาชน*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="password"  />
+        <input class="form-control" type="int" placeholder="idnumber" data-ng-model="credentials.idnumber"  />
       </div>
       <br><br>
 
-     
+      <!--<img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="credentials.userpicture">
+      <div class="select-zone" ngf-select ngf-change="onFileSelected($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)" ng-model="credentials.userpicture" name="fieldName" accept="image/*" ngf-max-size="2MB" required ng-hide="credentials.userpicture">
+      </div>-->
+
+      <img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="credentials.userpicture">
+      <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">Select File</button>
+      <br><br>
+
 
       <div class="form-group text-right">
         <button class="btn btn-primary" type="submit">Sign up</button>

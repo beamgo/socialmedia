@@ -89,12 +89,20 @@ h3.pageName{
   -moz-border-radius-topright: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: #00bff3;
+  border: 1px solid #9e9e9e;
+  background-color: #d0f7f7;
   height: 96px;
 }
 
 .profile .header a {
-  color: #fff;
+  color: black;
+
+}
+
+.profile .header .profile-pic{
+  width: 73px;
+  height: 73px;
+
 }
 
 .profile .header .name {
@@ -148,11 +156,12 @@ h3.pageName{
   -moz-border-radius-topright: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  height: auto;
 }
 
 .new-tweet {
   padding: 10px 10px;
-  background-color: #cceef8;
+  background-color: #d0f7f7;
   border: 1px solid #00acda;
   border-top: 0;
 }
@@ -186,6 +195,26 @@ h3.pageName{
 
 .tweet .tweet-text {
   color: black;
+}
+.tweet-pic {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 15px;
+
+}
+.tweet-preview {
+  width: 100%;
+  height: 100%;
+  background-color:#eef4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.camera {
+  width: 20px;
+  height: 20px;
+  
 }
 
 .action .reply,
@@ -225,7 +254,8 @@ h3.pageName{
 }
 
 .login-form {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     background-color: #fff;
     border: 1px solid #9e9e9e;
     padding: 20px 30px;
@@ -248,7 +278,8 @@ h3.pageName{
 }
 
 .signup-form {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     background-color: #fff;
     border: 1px solid #9e9e9e;
     padding: 20px 30px;
@@ -270,17 +301,47 @@ h3.pageName{
 }
 
 body {
-  background-color: #eef4f4;
+  background-image: url('../../../img/bg.png');;
   color: black;
+  display: block;
 }
 
 .thumb{
     width:100px;
     height: 100px;
-    margin:5px;
+    margin:10px;
     float:left;
 }
 
 .uploader{
     clear:both;
 }
+.img-wrap {
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+}
+.img-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+}
+.img-wrap:hover .close {
+    opacity: 1;
+}
+.test {
+  margin: 50px auto; 
+  width: 100%; 
+  max-width: 500px;
+}
+

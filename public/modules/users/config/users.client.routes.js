@@ -14,12 +14,16 @@ angular.module('users').config(['$stateProvider',
 			templateUrl: 'modules/users/views/settings/change-password.client.view.html'
 		}).
 		state('accounts', {
-			url: '/settings/accounts',
+			url: '',
 			templateUrl: 'modules/users/views/settings/social-accounts.client.view.html'
 		}).
 		state('signup', {
 			url: '/signup',
 			templateUrl: 'modules/users/views/authentication/signup.client.view.jade'
+		}).
+		state('firstsignup', {
+			url: '/firstsignup',
+			templateUrl: 'modules/users/views/authentication/before.signup.client.view.jade'
 		}).
 		state('signin', {
 			url: '/signin',

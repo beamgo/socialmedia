@@ -21,6 +21,9 @@ var validateLocalStrategyPassword = function(password) {
 	return (this.provider !== 'local' || (password && password.length > 6));
 };
 
+var validateLocalStrategyNumberID = function(number) {
+	return (this.provider !== 'local' || (number && number.length == 10));
+};
 /**
  * User Schema
  */
@@ -58,6 +61,13 @@ var UserSchema = new Schema({
 		type: String,
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
+	},
+	idnumber: {
+		type: String,
+		validate: [validateLocalStrategyNumberID, 'เลขบัตรประชาชนไม่ถูกต้อง']
+	},
+	userpicture: {
+		type: String
 	},
 	salt: {
 		type: String

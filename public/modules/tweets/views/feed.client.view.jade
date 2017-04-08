@@ -1,118 +1,110 @@
 html.
-  <div data-ng-controller="FeedController">
-    <div class="container body">
-      <div class="left-panel">
-        <div class="profile">
-          <div class="header">
-          <a data-ui-sref="me">
-              <div class="name">{{ profile.name }}</div>
-          </a>
-          <a data-ui-sref="me">
-              <div class="screen-name">@{{ profile.screenName }}</div>
-          </a>
+  <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px" data-ng-controller="FeedController">    
+    <!-- The Grid -->
+    <div class="w3-row">
+      <!-- Left Column -->
+      <div class="w3-col m3">
+        <!-- Profile -->
+        <div class="w3-card-2 w3-round w3-white">
+          <div class="w3-container">
+           <h2  class="w3-center">{{ profile.name }}</h2>
+           <p class="w3-center"><img ng-src="{{ profile.userpicture }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+           <h5  class="w3-center">@{{ profile.screenName }}</h5>
+           <hr>
+           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>งานปัจจุบัน</p>
+           <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>การศึกษา</p>
+           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>วันเกิด</p>
           </div>
-          <!-- /.header-->
-          <div class="detail last-section">
-          <!--<a class="DashboardProfileCard-avatarLink u-inlineBlock" title="Beamnedict" tabindex="-1" aria-hidden="true" rel="noopener" >
-          <img class="DashboardProfileCard-avatarImage js-action-profile-avatar" src="https://pbs.twimg.com/profile_images/378800000482049918/d7b7493e9066f7df82d90c112a0c0501_bigger.jpeg">
-          </a>-->
-            <div class="col">
-              <div class="text">Post</div>
-              <div class="number">{{ profile.tweetCount }}</div>
-            </div>
-            <div class="col">
-              <div class="text">Followers</div>
-              <div class="number">{{ profile.followerCount }}</div>
-            </div>
-            <div class="col">
-              <div class="text">Following</div>
-              <div class="number">{{ profile.followingCount }}</div>
-            </div>
-          </div>
-         
-        
-         hh
-           <!--<div >
-          <form ng-submit="submit()">
-            <legend>Upload a new file here:</legend>
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" ng-model="upload.name" required/>
-            <br/>
-            <label for="file">File:</label>
-            <input type="file" name="file" id="file" ng-model="upload.file" ngf-select ngf-max-size="25MB" required/>
-            <br/>
-            <input type="submit" value="Submit"/>
-          </form>
-
-          <h2>All uploads are here:</h2>
-          <ul>
-            <li ng-repeat="upload in uploads">
-              <p>{{upload.name}}</p>
-              <img class="thumb" ng-src='{{upload.file.path + "/" + upload.file.originalname}}'></img>
-              <a ng-href='{{upload.file.path + "/" + upload.file.originalname}}'>{{upload.file.originalname}}</a>
-            </li>
-          </ul>
-        </div>-->
-           <!-- <iframe width="854" height="480" src="https://www.youtube.com/embed/yAvpq98sAx0" frameborder="0" allowfullscreen></iframe>-->
-
-
-         
-          <!-- /.detail-->
         </div>
-        <!-- /.border-box .profile-->
+        <br>
+      <!-- End Left Column -->
       </div>
-      <div class="main-panel">
-        <div class="new-tweet first-item">
-          <form class="form-horizontal" ng-submit="submit()">
-            <div id="column-1" class="post">
-              <div class="tweet-text" style="height: 100px; width:538px;">
-                  <input class="form-control" style="height: 50px; width:538px;" id="tweetText" type="text" placeholder="What's happening" data-ng-model="tweetText"/>
-                  <div >
-                    
-                      
-                      
-                      <br/>
-                      <label for="file">File:</label>
-                      <input type="file" name="file" id="file" ng-model="upload.file" ngf-select ngf-max-size="25MB" required/>
-                      <br/>
-                      <input type="submit" value="Submit"/>
-                    
+      
+      <!-- Middle Column -->
+      <div class="w3-col m7">
+      
+        <div class="w3-row-padding">
+        <form name="myForm" class="form-horizontal" ng-submit="submit()">
+          <div class="w3-col m12">
+            <div class="w3-card-2 w3-round w3-white">
+              <div class="w3-container w3-padding">
 
-                    <h2>All uploads are here:</h2>
-                    <ul>
-                      <li ng-repeat="upload in uploads">
-                        <p>{{upload.name}}</p>
-                        <img class="thumb" ng-src='{{upload.file.path + "/" + upload.file.originalname}}'></img>
-                        <a ng-href='{{upload.file.path + "/" + upload.file.originalname}}'>{{upload.file.originalname}}</a>
-                      </li>
-                    </ul>
-                  </div>
-                
-                  <!--<div ng-repeat="step in stepsModel">
-                    <img class="thumb" ng-src="{{step}}" controls></img>
-                   
-                  </div>
-                  <input type='file' ng-model-instant onchange="angular.element(this).scope().imageUpload(event)" multiple />-->
-                  
+                <textarea class="form-control" style="height: 100px;" id="tweetText" type="text" placeholder="What's happening" data-ng-model="tweetText"></textarea>
+                <div class="tweet-preview" ng-hide="files == null && video == null" >
+                      <div class="img-wrap" ng-repeat="f in files" style="font:smaller">
+                        <span class="close" ng-click="remove(f)" ng-show="f">&times;</span>
+                        <img class="thumb" ngf-thumbnail="f || '/thumb.jpg'"></img>
+                      </div>
+                      <div ng-repeat="picFile in video" style="font:smaller">
+                        <video ngf-thumbnail="picFile" class="thumb">
+                      </div>
                 </div>
+                <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                    
+                  <div style="padding-left:0px; padding-top:5px;" class="col-sm-12">
+                    <img type="file" class="camera"  src="img/camera.png" ngf-select="uploadFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-height="1000" ngf-max-size="10MB" > เพิ่มรูปภาพ</img>
+                    <img class="camera"  src="img/video.png" ngf-select="uploadVideo($files, $invalidFiles)" ng-model="picFile"  accept="video/*" ngf-max-height="1000" ngf-max-size="800MB" > เพิ่มวิดีโอ</img>
+                  </div>
+                  <br><br>
+                <button style="float: right;" type="button" class="w3-button w3-theme" data-ng-click="postTweet(tweetText, profile.name, profile.screenName, profile.userpicture)"><i class="fa fa-pencil"></i>  Post</button> 
+              </div>
             </div>
-            <br><br>
-            <div class="form-group" style="margin-bottom: 1px;">
-                <div class="col-sm-2" style="float:right;">
-                  <input class="btn btn-default" type="button" value="Post" data-ng-click="postTweet(tweetText, profile.name, profile.screenName)"/>
-                </div>
-            </div>
-          </form>
+          </div>
+          
         </div>
-        <div class="tweet" data-ng-repeat="tweet in timeline | orderBy: '-tweetTime'"><a href="user.jade">
-            <div class="name">{{ tweet.name }}</div>
-            <div class="screen-name"> @{{ tweet.screenName }}</div></a>
+
+
+        <div  data-ng-repeat="tweet in timeline | orderBy: '-tweetTime'">
+          <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+            <img ng-src="{{ tweet.userpicture }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px; height:80px">
+
+            <h3><a href="user.jade">{{ tweet.name }}</a></h3>
+            <h5>@{{ tweet.screenName }}<h5>
+            <hr class="w3-clear">
             <div class="tweet-text">{{ tweet.tweetText }}</div>
-            <div class="tweet-text">{{ tweet.tweetPic }}</div>
-            <div class="action">
-            <div class="reply" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-reply"></i></div>
+
+              <div class="w3-row-padding" style="margin:0 -16px">
+                <div  ng-repeat="pic in tweet.tweetPic">
+                  <img class="tweet-pic" ng-src='{{pic}}'></img>
+                </div>
+                <div ng-repeat="vid in tweet.tweetVid">
+                <video class="tweet-pic" ng-src="{{vid}}" controls>
+                     
+                </video>
+              </div>
+              </div>
+              
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i>  Comment</button> 
+            
+            </form>
           </div>
         </div>
+        
+      <!-- End Middle Column -->
       </div>
+      
+      <!-- Right Column -->
+      <div class="w3-col m2">
+        <div class="w3-card-2 w3-round w3-white w3-center">
+          <div class="w3-container">
+            <p>friend</p>
+            
+          </div>
+        </div>
+        <br>
+ 
+      <!-- End Right Column -->
+      </div>
+      
+    <!-- End Grid -->
     </div>
+    
+  <!-- End Page Container -->
   </div>
+  <br>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-theme-d3 w3-padding-16">
+    
+  </footer>
+

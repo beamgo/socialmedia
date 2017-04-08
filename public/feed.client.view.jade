@@ -1,0 +1,80 @@
+html.
+  <div class="w3-container w3-content" style="max-width:1400px;margin-top:30px">
+  <div data-ng-controller="FeedController">
+    <div class="container body">
+      <div class="left-panel">
+      <div class="w3-card-2 w3-round w3-white">
+        <div class="w3-container">
+         <h2  class="w3-center">{{ profile.name }}</h4>
+         <p class="w3-center"><img src="https://pbs.twimg.com/profile_images/378800000482049918/d7b7493e9066f7df82d90c112a0c0501_bigger.jpeg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <h5  class="w3-center">@{{ profile.screenName }}</h4>
+         <hr>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> งานปัจจุบัน</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> การศึกษา</p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> วันเกิด</p>
+        </div>
+      </div>
+        
+        <!-- /.border-box .profile-->
+      </div>
+      <div class="main-panel">
+        <div class="new-tweet first-item">
+          <form name="myForm" class="form-horizontal" ng-submit="submit()">
+            <div id="column-1" class="post">
+              <div class="tweet-text" style="height: 100px; width:538px;">
+                  <input class="form-control" style="height: 100px; width:538px;" id="tweetText" type="text" placeholder="What's happening" data-ng-model="tweetText"/>
+                  
+                  
+                    <div class="tweet-preview" ng-hide="files == null && video == null" >
+                      <div class="img-wrap" ng-repeat="f in files" style="font:smaller">
+                        <span class="close" ng-click="remove(f)" ng-show="f">&times;</span>
+                        <img class="thumb" ngf-thumbnail="f || '/thumb.jpg'"></img>
+                      </div>
+                      <div ng-repeat="picFile in video" style="font:smaller">
+                        <video ngf-thumbnail="picFile" class="thumb">
+                      </div>
+                    </div>
+                    
+                  <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                    
+                  <div style="padding-left:0px; padding-top:5px;" class="col-sm-12">
+                    <img type="file" class="camera"  src="img/camera.png" ngf-select="uploadFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-height="1000" ngf-max-size="1MB" > อัปโหลดรูปภาพ</img>
+                    <img class="camera"  src="img/camera.png" ngf-select="uploadVideo($files, $invalidFiles)" ng-model="picFile"  accept="video/*" ngf-max-height="1000" ngf-max-size="800MB" > อัปโหลดวิดีโอ</img>
+                  </div>
+                  
+                  
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 1px;">
+                <div class="col-sm-2" style="float:right;">
+                  <input class="btn btn-default" type="button" value="Post" data-ng-click="postTweet(tweetText, profile.name, profile.screenName)"/>
+                </div>
+            </div>
+          
+        </div>
+
+        <div class="tweet" data-ng-repeat="tweet in timeline | orderBy: '-tweetTime'"><a href="user.jade">
+            <div class="name">{{ tweet.name }}</div>
+            <div class="screen-name"> @{{ tweet.screenName }}</div></a>
+            <div class="tweet-text">{{ tweet.tweetText }}</div>
+            <div ng-repeat="pic in tweet.tweetPic">
+              <img class="tweet-pic" ng-src='{{pic}}'></img>
+            </div>
+            <div ng-repeat="vid in tweet.tweetVid">
+              <video class="tweet-pic" ng-src="{{vid}}" controls>
+                  <p>Your browser doesn't support HTML5 video. Here is a <a href="{{vid}}">link to the video</a> instead.</p> 
+              </video>
+            </div>
+
+            <div class="action">
+            <div class="reply" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-reply"></i></div>
+            </form>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

@@ -1,7 +1,9 @@
 html.
   <nav class="navbar navbar-default navbar-fixed-top" data-ng-controller="HeaderController">
   <div class="container">
+
     <!-- Brand and toggle get grouped for better mobile display-->
+
     <div class="navbar-header">
       <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
       <span class="sr-only">Toggle navigation</span>
@@ -14,19 +16,28 @@ html.
     <!-- Collect the nav links, forms, and other content for toggling-->
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <form class="navbar-form navbar-left" role="search" data-ng-if="authentication.user">
+          <div style="width:300px;" class="input-group add-on">
+            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+    </form>
     <ul class="nav navbar-nav navbar-left">
                 <li>
-                    <a href="c-mainbrowse.php">ค้นหางาน</a>
+                    <a data-ng-if="authentication.user" href="c-mainbrowse.php">ค้นหางาน</a>
                 </li>
                 
                 <li>
-                    <a href="c-edit-1.php">แก้ไขข้อมูลส่วนตัว</a>
+                    <a data-ng-if="authentication.user" href="c-edit-1.php">แก้ไขข้อมูลส่วนตัว</a>
                 </li>
       </ul>
+      
       <form class="navbar-form navbar-right" role="signin" data-ng-if="!authentication.user"><a class="btn btn-default" data-ui-sref="signin">Sign in</a><a class="btn btn-primary" data-ui-sref="signup">Sign up</a></form>
       <form class="navbar-form navbar-right" role="signout" data-ng-if="authentication.user"><a class="btn btn-primary" href="/auth/signout">Sign out</a></form>
     </div>
   
   </div>
 
-</nav>
+ 

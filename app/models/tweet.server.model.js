@@ -13,6 +13,10 @@ var TweetSchema = new Schema({
         type: String,
         trim: true
     },
+    screenPicture: {
+        type: String,
+        trim: true
+    },
     tweetText: {
         type: String
     },
@@ -21,8 +25,10 @@ var TweetSchema = new Schema({
         default: Date.now
     },
     tweetPic: {
-        data: Buffer, 
-        contentType: String
+        type: Array
+    },
+    tweetVid: {
+        type: Array
     } 
 });
 

@@ -28,7 +28,7 @@ angular.module('tweets')
             if ( (( toState.name !== 'signup') && ( toState.name !== 'signin')) &&
                     !Authentication.user) {
                 event.preventDefault();
-                // $state.go('signup');
+                $state.go('signup');
             }
         });
     }

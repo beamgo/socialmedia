@@ -1,11 +1,15 @@
-.modal-header
-  button.close(type='button', data-dismiss='modal', aria-label='Close')
-    span(aria-hidden='true') ×
-  h4#replyModalLabel.modal-title Reply
-.modal-body
-  form
-    .text-area-wrapper
-      textarea.text-area(rows='4', cols='52', data-ng-model="tweetText")
-    .text-right
-      input.btn.btn-default(type='submit', value='Reply', data-ng-click='reply()')
-      input.btn.btn-danger(type='button', value='Close', data-ng-click='close()')
+html.
+	<div style="background-color:#607d8b; color:white;" class="modal-header">
+	  <h4 id="replyModalLabel" class="modal-title">Reply</h4>
+	</div>
+	<div style="background-color:white;" class="modal-body">
+	  <form>
+	    <div class="text-area-wrapper">
+	      <textarea class="form-control" style="height: 100px;" rows="4" cols="52" data-ng-model="tweetText" ></textarea>
+	    </div>
+	    <div class="text-right">
+	      <input type="submit" value="Reply" data-ng-click="reply()" class="w3-button w3-theme"/>
+	      <input type="button" value="Close" data-ng-click="close()" class="w3-button w3-theme"/>
+	    </div>
+	  </form>
+	</div>
