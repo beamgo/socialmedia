@@ -1,5 +1,6 @@
 html.
-  <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px" data-ng-controller="FeedController">    
+  <div class="w3-container w3-content blackwhite" style="max-width:1400px;margin-top:50px " data-ng-controller="FeedController"> 
+  <br>   
     <!-- The Grid -->
     <div class="w3-row">
       <!-- Left Column -->
@@ -14,6 +15,35 @@ html.
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>งานปัจจุบัน</p>
            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>การศึกษา</p>
            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>วันเกิด</p>
+          </div>
+        </div>
+        <br>
+      
+
+        <div class="w3-card-2 w3-round w3-white ">
+          <div class="w3-container">
+          <br>
+            <div style="width:100%;" class="input-group add-on">
+              <input ng-model="query" style="width:100%;" class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+            <br>
+              <p>คำค้นหาที่แนะนำ</p>
+              <p>
+                <span class="w3-tag w3-small w3-theme-d5">KFC</span>
+                <span class="w3-tag w3-small w3-theme-d4">งาน</span>
+                <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+                <span class="w3-tag w3-small w3-theme-d2">Games</span>
+                <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+                <span class="w3-tag w3-small w3-theme">Games</span>
+                <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+                <span class="w3-tag w3-small w3-theme-l2">Food</span>
+                <span class="w3-tag w3-small w3-theme-l3">Design</span>
+                <span class="w3-tag w3-small w3-theme-l4">Art</span>
+                <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+              </p>
           </div>
         </div>
         <br>
@@ -54,9 +84,9 @@ html.
         </div>
 
 
-        <div  data-ng-repeat="tweet in timeline | orderBy: '-tweetTime'">
+        <div  data-ng-repeat="tweet in timeline | orderBy: '-tweetTime' | filter:query ">
           <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-            <img ng-src="{{ tweet.userpicture }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px; height:80px">
+            <img ng-src="{{ tweet.screenPicture }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px; height:80px">
 
             <h3><a href="user.jade">{{ tweet.name }}</a></h3>
             <h5>@{{ tweet.screenName }}<h5>
@@ -73,13 +103,35 @@ html.
                 </video>
               </div>
               </div>
-              
-            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i>  Comment</button> 
+              <br>
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i> Reply</button> 
             
             </form>
           </div>
         </div>
-        
+
+        <div  data-ng-repeat="tweet in tweets | orderBy: '-tweetTime' | filter:query" data-ng-class="{'first-item' : $first}">
+          <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+          <img ng-src="{{ tweet.screenPicture }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px; height:80px">
+
+            <h3><a href="user.jade">{{ tweet.name }}</a></h3>
+            <h5>@{{ tweet.screenName }}<h5>
+            <hr class="w3-clear">
+            <div class="tweet-text">{{ tweet.tweetText }}</div>
+            <div class="w3-row-padding" style="margin:0 -16px">
+                <div  ng-repeat="pic in tweet.tweetPic">
+                  <img class="tweet-pic" ng-src='{{pic}}'></img>
+                </div>
+                <div ng-repeat="vid in tweet.tweetVid">
+                <video class="tweet-pic" ng-src="{{vid}}" controls>
+                     
+                </video>
+              </div>
+              </div>
+              <br>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i> Reply</button> 
+        </div>
+        </div>
       <!-- End Middle Column -->
       </div>
       

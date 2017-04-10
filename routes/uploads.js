@@ -30,11 +30,17 @@ router.get('/:uuid/:filename', function (req, res, next) {
 
     if (err)  next(err);
     else {
-      res.set({
-        "Content-Disposition": 'attachment; filename="' + upload.file.originalname + '"',
-        "Content-Type": upload.file.mimetype
-      });
-      fs.createReadStream(upload.file.path).pipe(res);
+
+      if (upload == null){
+        console.log('upload = null');
+      }
+      else{
+        res.set({
+          "Content-Disposition": 'attachment; filename="' + upload.file.originalname + '"',
+          "Content-Type": upload.file.mimetype
+        });
+        fs.createReadStream(upload.file.path).pipe(res);
+      }
     }
   });
 });
