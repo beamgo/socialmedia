@@ -1,5 +1,5 @@
 html.
-  <div class="w3-container w3-content blackwhite" style="max-width:1400px;margin-top:50px " data-ng-controller="FeedController"> 
+  <div class="w3-container w3-content " style="max-width:1400px;margin-top:50px " data-ng-controller="FeedController"> 
   <br>   
     <!-- The Grid -->
     <div class="w3-row">
@@ -14,7 +14,9 @@ html.
            <hr>
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>งานปัจจุบัน</p>
            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>การศึกษา</p>
-           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>วันเกิด</p>
+           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme" ></i>วันเกิด</p>
+           <hr>
+           <p><i class="fa fa-info-circle fa-fw w3-margin-right w3-text-theme" data-ng-click="redirectToProfile()"></i>ดูข้อมูลส่วนตัวทั้งหมด</p><br>
           </div>
         </div>
         <br>
@@ -26,23 +28,23 @@ html.
             <div style="width:100%;" class="input-group add-on">
               <input ng-model="query" style="width:100%;" class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
               <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button>
               </div>
             </div>
             <br>
               <p>คำค้นหาที่แนะนำ</p>
               <p>
-                <span class="w3-tag w3-small w3-theme-d5">KFC</span>
-                <span class="w3-tag w3-small w3-theme-d4">งาน</span>
-                <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-                <span class="w3-tag w3-small w3-theme-d2">Games</span>
-                <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-                <span class="w3-tag w3-small w3-theme">Games</span>
-                <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-                <span class="w3-tag w3-small w3-theme-l2">Food</span>
-                <span class="w3-tag w3-small w3-theme-l3">Design</span>
-                <span class="w3-tag w3-small w3-theme-l4">Art</span>
-                <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+                <span data-ng-click="changekeyword('KFC')" class="w3-tag w3-small w3-theme-d5" >KFC</span>
+                <span data-ng-click="changekeyword('งาน')" class="w3-tag w3-small w3-theme-d5">งาน</span>
+                <span data-ng-click="changekeyword('business')" class="w3-tag w3-small w3-theme-d5">business</span>
+                <span data-ng-click="changekeyword('เอกสาร')" class="w3-tag w3-small w3-theme-d5">เอกสาร</span>
+                <span data-ng-click="changekeyword('บริษัท')" class="w3-tag w3-small w3-theme-d5">บริษัท</span>
+                <span data-ng-click="changekeyword('อบรม')" class="w3-tag w3-small w3-theme-d5">อบรม</span>
+                <span class="w3-tag w3-small w3-theme-d5">Friends</span>
+                <span class="w3-tag w3-small w3-theme-d5">Food</span>
+                <span class="w3-tag w3-small w3-theme-d5">Design</span>
+                <span class="w3-tag w3-small w3-theme-d5">Art</span>
+                <span class="w3-tag w3-small w3-theme-d5">Photos</span>
               </p>
           </div>
         </div>
@@ -60,6 +62,7 @@ html.
               <div class="w3-container w3-padding">
 
                 <textarea class="form-control" style="height: 100px;" id="tweetText" type="text" placeholder="What's happening" data-ng-model="tweetText"></textarea>
+          
                 <div class="tweet-preview" ng-hide="files == null && video == null" >
                       <div class="img-wrap" ng-repeat="f in files" style="font:smaller">
                         <span class="close" ng-click="remove(f)" ng-show="f">&times;</span>
@@ -69,14 +72,15 @@ html.
                         <video ngf-thumbnail="picFile" class="thumb">
                       </div>
                 </div>
-                <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-                    
+                
                   <div style="padding-left:0px; padding-top:5px;" class="col-sm-12">
-                    <img type="file" class="camera"  src="img/camera.png" ngf-select="uploadFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-height="1000" ngf-max-size="10MB" > เพิ่มรูปภาพ</img>
-                    <img class="camera"  src="img/video.png" ngf-select="uploadVideo($files, $invalidFiles)" ng-model="picFile"  accept="video/*" ngf-max-height="1000" ngf-max-size="800MB" > เพิ่มวิดีโอ</img>
+                   
+                    <i class="fa fa-photo  w3-text-theme" type="file" class="camera"   ngf-select="uploadFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-height="1000" ngf-max-size="10MB" placeholder="เพิ่มรูปภาพ"> เพิ่มรูปภาพ</i>
+                    <i class="fa fa-video-camera  w3-text-theme" class="camera"  src="img/video1.png" ngf-select="uploadVideo($files, $invalidFiles)" ng-model="picFile"  accept="video/*" ngf-max-height="1000" ngf-max-size="800MB"> เพิ่มวิดีโอ</i>
                   </div>
                   <br><br>
-                <button style="float: right;" type="button" class="w3-button w3-theme" data-ng-click="postTweet(tweetText, profile.name, profile.screenName, profile.userpicture)"><i class="fa fa-pencil"></i>  Post</button> 
+                  {{errorMsg}}
+                <button style="float: right; background-color: #607d8b; " type="button" class="w3-button " data-ng-click="postTweet(tweetText, profile.name, profile.screenName, profile.userpicture)"><i class="fa fa-pencil"></i> โพสต์</button> 
               </div>
             </div>
           </div>
@@ -88,7 +92,7 @@ html.
           <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
             <img ng-src="{{ tweet.screenPicture }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px; height:80px">
 
-            <h3><a href="user.jade">{{ tweet.name }}</a></h3>
+            <h3><a href="#!/user.jade">{{ tweet.name }}</a></h3>
             <h5>@{{ tweet.screenName }}<h5>
             <hr class="w3-clear">
             <div class="tweet-text">{{ tweet.tweetText }}</div>
@@ -104,7 +108,7 @@ html.
               </div>
               </div>
               <br>
-            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i> Reply</button> 
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i> ตอบกลับ</button> 
             
             </form>
           </div>
@@ -129,7 +133,7 @@ html.
               </div>
               </div>
               <br>
-          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i> Reply</button> 
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName)"><i class="fa fa-comment"></i> ตอบกลับ</button> 
         </div>
         </div>
       <!-- End Middle Column -->
@@ -138,8 +142,33 @@ html.
       <!-- Right Column -->
       <div class="w3-col m2">
         <div class="w3-card-2 w3-round w3-white w3-center">
-          <div class="w3-container">
-            <p>friend</p>
+          <div style="padding:0px;" class="w3-container">
+            <h3>เลือกผู้สนทนา</h3>
+            <hr>
+            <div id="Demo1" class="w3-hide w3-animate-left w3-show">
+                <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
+                  <div class="w3-container">
+                    <img class="w3-round w3-margin-right" src="img/p-half_0001.png" style="width:30%;"><span class=" w3-large">Rani Mukharji</span>
+                    <p>@Rani</p>
+                    
+                  </div>
+                </a>
+                <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
+                  <div class="w3-container">
+                    <img class="w3-round w3-margin-right" src="img/p-half_0002.png" style="width:30%;"><span class=" w3-large">ดาวใจ เพ็ญพักตร์</span>
+                    <p>@ดาวใจ</p>
+                    
+                  </div>
+                </a>
+                <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
+                  <div class="w3-container">
+                    <img class="w3-round w3-margin-right" src="img/p-half_0003.png" style="width:30%;"><span class=" w3-large">Sira Pattatul</span>
+                    <p>@Sira</p>
+                    
+                  </div>
+                </a>
+
+            </div>
             
           </div>
         </div>

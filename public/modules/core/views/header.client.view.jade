@@ -25,11 +25,34 @@ html.
                     <a data-ng-if="authentication.user" href="c-edit-1.php">แก้ไขข้อมูลส่วนตัว</a>
                 </li>
       </ul>
-      
+      <div class="nav navbar-nav navbar-right" style="text-align:right;">
+        <div style="font-size: 14px" id="divFontSize">
+          ปรับขนาดตัวอักษร 
+          <a data-ng-click="fontSmall()" class="btn font-small btn-circle whiteblack " title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง">ก</a>
+          <a data-ng-click="fontNormal()" class="btn font-medium btn-circle whiteblack " style="line-height:1;" title="เปลี่ยนการแสดงผลแบบปกติ">ก</span></a>
+          <a data-ng-click="fontLarge()" class="btn  btn-circle  whiteblack font-large " style="line-height:0.7;" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว">ก</span></a>
+          
+          <!--<a href="#" data-fontsize="large" title="ขนาดใหญ่">ขนาดใหญ่</a>
+          <a href="#" data-fontsize="normal" title="ขนาดปกติ">ขนาดปกติ</a> 
+          <a href="#" data-fontsize="small" title="ขนาดเล็ก">ขนาดเล็ก</a> -->
+          <div class="clearfix"></div>
+        </div>
+        <div style="font-size: 14px" id="divTheme">
+          ปรับแต่งรูปแบบการแสดงผล 
+            <a data-ng-click="clickBlackYellow()"   class="btn btn-circle blackyellow" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง">C</a>
+            <a data-ng-click="clickNormal()" class="btn font-medium btn-circle whiteblack" title="เปลี่ยนการแสดงผลแบบปกติ">C</span></a>
+            <a data-ng-click="clickBlackWhite()" class="btn btn-circle  blackwhite" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว">C</span></a>
+
+          <!--<a href="#" data-theme="yellow" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง">เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง</a>
+          <a href="#" data-theme="normal" title="เปลี่ยนการแสดงผลแบบปกติ">เปลี่ยนการแสดงผลแบบปกติ</a> 
+          <a href="#" data-theme="white" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว">เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว</a> -->
+          <div class="clearfix"></div>
+        </div>
+      </div>
       <form class="navbar-form navbar-right" role="signin" data-ng-if="!authentication.user"><a class="btn btn-default" data-ui-sref="signin">Sign in</a><a class="btn btn-primary" data-ui-sref="signup">Sign up</a></form>
       <form class="navbar-form navbar-right" role="signout" data-ng-if="authentication.user"><a class="btn btn-primary" href="/auth/signout">Sign out</a></form>
     </div>
   
   </div>
-
+ 
  

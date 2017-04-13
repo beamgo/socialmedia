@@ -49,19 +49,19 @@ html.
       <div class="col-md-4 labelRequest control-label">
         <input class="form-control" type="int" placeholder="idnumber" data-ng-model="credentials.idnumber"  />
       </div>
-      <br><br>
+      <br><br><br>
 
-      <!--<img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="credentials.userpicture">
-      <div class="select-zone" ngf-select ngf-change="onFileSelected($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)" ng-model="credentials.userpicture" name="fieldName" accept="image/*" ngf-max-size="2MB" required ng-hide="credentials.userpicture">
-      </div>-->
-
-      <img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="credentials.userpicture">
-      <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">Select File</button>
+      
+      <label class="col-md-4 labelRequest control-label">รูปภาพประจำตัว</label>
+      <div class="col-md-4 labelRequest control-label">
+        <button class="btn btn-primary" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">เลือกไฟล์รูปภาพ</button>
+        <img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="credentials.userpicture">
+      </div>
       <br><br>
 
 
       <div class="form-group text-right">
-        <button class="btn btn-primary" type="submit">Sign up</button>
+        <button class="btn btn-primary" type="submit">ลงทะเบียน</button>
       </div>
       <div class="text-center text-danger" data-ng-show="error"><strong data-ng-bind="error"></strong></div>
     </form>

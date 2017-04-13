@@ -7,7 +7,8 @@ angular.module('tweets').controller('FeedController', [
     '$http',
     'Upload',
     '$timeout',
-    function($scope, $modal, Authentication, $http, Upload, $timeout) {
+    '$location',
+    function($scope, $modal, Authentication, $http, Upload, $timeout,$location) {
         $scope.profile = {
             name: Authentication.user.displayName,
             screenName: Authentication.user.username,
@@ -131,8 +132,10 @@ angular.module('tweets').controller('FeedController', [
                             console.log('ArrayVideo in'+$scope.ArrayVideo);
                         });
                     }, function (response) {
-                        if (response.status > 0)
+                        if (response.status > 0){
                             $scope.errorMsg = response.status + ': ' + response.data;
+                            console.log('error');
+                        }
                     }, function (evt) {
                         file.progress = Math.min(100, parseInt(100.0 * 
                                                  evt.loaded / evt.total));
@@ -199,6 +202,16 @@ angular.module('tweets').controller('FeedController', [
                 $scope.postTweet(tweetText, $scope.profile.name, $scope.profile.screenName,$scope.profile.userpicture);
             });
         };
+
+        $scope.changekeyword = function(keyword){
+            $scope.query = keyword;
+            console.log($scope.query); 
+        };
+        $scope.redirectToProfile = function(){
+            console.log('go');
+            $location.path('/view/profile');
+        };
+       
 
     }
    

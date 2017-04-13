@@ -214,7 +214,8 @@ h3.pageName{
 .camera {
   width: 20px;
   height: 20px;
-  
+  margin-bottom: 5px;
+  background-image: url(../../../img/camera1.png);
 }
 
 .action .reply,
@@ -344,7 +345,251 @@ body {
   width: 100%; 
   max-width: 500px;
 }
-.blackwhite {
-  background-color: black;
+.blackwhite, .blackwhite:focus{
+  background-color: black !important;
+  color: white !important;
+  background-image: none; 
+}
+.blackyellow, .blackyellow:focus {
+  background-color: black !important;
+  color: yellow !important;
+  background-image: none; 
+}
+.whiteblack, .whiteblack:focus{
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+
+.btn-circle {
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  padding: 0;
+  border-radius: 20px;
+}
+.font-small {
+  font-size: 12px;
+}
+
+.font-medium {
+  font-size: 14px;
+}
+
+.font-large {
+  font-size: 16px;
+}
+
+/* theme blackwhite */
+.blackwhite .ng-scope .navbar, 
+.blackwhite .ng-scope .container .signup-form,
+.blackwhite .ng-scope.login-form {
+  background-color: black ;
+  color: white ;
+}
+.blackwhite .ng-scope .container .pageName,
+.blackwhite .ng-scope .container .signup-form .title-label,
+.blackwhite .ng-scope .container .collapse .nav .ng-scope {
+  color: white ;
+}
+.blackwhite .ng-scope .container .signup-form .col-md-4 .form-control,
+.blackwhite .ng-scope .login-form .form-group .form-control {
   color: white;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 4px
+}
+.blackwhite .ng-scope .w3-container .w3-row .w3-col .w3-card-2 {
+  color: white !important;
+  background-color: black !important;
+  border: 1px solid white !important;
+  border-radius: 4px !important;
+}
+.blackwhite .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .fa {
+  color: white !important;
+}
+.blackwhite .ng-scope .w3-container .w3-row .w3-col .w3-row-padding 
+.form-horizontal .w3-col .w3-card-2 .w3-container .form-control {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 4px
+}
+.blackwhite .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .input-group .input-group-btn .btn {
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 4px
+}
+.blackwhite .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .input-group .form-control  {
+  background-color: black !important;
+  color: white !important;
+}
+.blackwhite .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .fa {
+  color: white !important;
+}
+.blackwhite .ng-scope .w3-container .w3-row .w3-row-padding .form-horizontal .w3-col .w3-card-2 .w3-container .tweet-preview {
+  background-color: black;
+  border: 1px solid white;
+}
+
+/* theme blackyellow */
+.blackyellow .ng-scope .navbar, 
+.blackyellow .ng-scope .container .signup-form,
+.blackyellow .ng-scope.login-form {
+  background-color: black ;
+  color: yellow ;
+  border-color: yellow;
+}
+.blackyellow .ng-scope .container .pageName,
+.blackyellow .ng-scope .container .signup-form .title-label,
+.blackyellow .ng-scope .container .collapse .nav .ng-scope {
+  color: yellow ;
+}
+.blackyellow .ng-scope .container .signup-form .col-md-4 .form-control,
+.blackyellow .ng-scope .login-form .form-group .form-control {
+  color: yellow;
+  background-color: black;
+  border: 1px solid yellow;
+  border-radius: 4px;
+
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: pink;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: pink;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: pink;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: pink;
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-card-2 {
+  color: yellow !important;
+  background-color: black !important;
+  border: 1px solid yellow !important;
+  border-radius: 4px !important;
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .w3-tag,
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .fa {
+  color: yellow !important;
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .col-sm-12 {
+  background-image: url();
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container .w3-button {
+  color: yellow !important;
+} 
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-row-padding 
+.form-horizontal .w3-col .w3-card-2 .w3-container .form-control {
+  color: yellow;
+  background-color: black;
+  border: 1px solid yellow;
+  border-radius: 4px
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .input-group .input-group-btn .btn {
+  background-color: black;
+  border: 1px solid yellow;
+  border-radius: 4px
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .input-group .form-control  {
+  background-color: black !important;
+  color: yellow !important;
+  border: 1px solid yellow;
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-row-padding .form-horizontal .w3-col .w3-card-2 .w3-container .tweet-preview {
+  background-color: black;
+  border: 1px solid yellow;
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container hr {
+  border-top: 1px solid yellow;
+}
+.blackyellow .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container h5 hr {
+  border-top: 1px solid yellow;
+}
+.blackyellow .ng-scope .container .signup-form .col-md-4 .form-control ::-webkit-input-placeholder{
+  color: yellow;
+}
+
+/*font small*/
+.fontsmall .ng-scope .navbar, 
+.fontsmall .ng-scope .container .signup-form,
+.fontsmall .ng-scope .container .signup-form .ng-valid .col-md-4 .form-control,
+.fontsmall .ng-scope.login-form,
+.fontsmall .ng-scope.login-form .ng-valid .form-group .form-control {
+  font-size:12px;
+}
+.fontsmall .ng-scope .navbar .container  .collapse .navbar-form .btn,
+.fontsmall .ng-scope.login-form .ng-valid  .form-group .btn {
+  font-size: 12px ;
+}
+.fontsmall .ng-scope .container .pageName {
+  font-size: 22px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container h2 {
+  font-size: 28px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container h5{
+  font-size: 16px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container p {
+  font-size: 13px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .input-group .form-control {
+  font-size: 12px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .w3-tag {
+  font-size: 10px !important;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-row-padding .form-horizontal .w3-col .w3-card-2 .w3-container,
+.fontsmall .ng-scope .w3-container .w3-row .w3-row-padding .form-horizontal .w3-col .w3-card-2 .w3-container .form-control  {
+  font-size: 12px !important;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container h3 {
+  font-size: 22px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container  h5 {
+  font-size: 16px ;
+}
+
+/*font large*/
+.fontlarge .ng-scope .navbar, 
+.fontlarge .ng-scope .container .signup-form,
+.fontlarge .ng-scope .container .signup-form .ng-valid .col-md-4 .form-control,
+.fontlarge .ng-scope.login-form,
+.fontlarge .ng-scope.login-form .ng-valid .form-group .form-control {
+  font-size:16px;
+}
+.fontlarge .ng-scope .navbar .container  .collapse .navbar-form .btn,
+.fontlarge .ng-scope.login-form .ng-valid  .form-group .btn {
+  font-size: 16px ;
+}
+.fontlarge .ng-scope .container .pageName {
+  font-size: 26px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container h2 {
+  font-size: 32px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container h5{
+  font-size: 20px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container p {
+  font-size: 17px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .input-group .form-control {
+  font-size: 16px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .w3-tag {
+  font-size: 14px !important;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-row-padding .form-horizontal .w3-col .w3-card-2 .w3-container,
+.fontlarge .ng-scope .w3-container .w3-row .w3-row-padding .form-horizontal .w3-col .w3-card-2 .w3-container .form-control  {
+  font-size: 16px !important;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container h3 {
+  font-size: 26px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container  h5 {
+  font-size: 20px ;
 }

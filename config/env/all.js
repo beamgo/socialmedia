@@ -14,10 +14,7 @@ module.exports = {
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
-				"https://www.w3schools.com/w3css/4/w3.css",
-				"https://www.w3schools.com/lib/w3-theme-blue-grey.css",
-				'https://fonts.googleapis.com/css?family=Open+Sans',
-				"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+				
 			],
 			js: [
 				'public/lib/angular/angular.js',

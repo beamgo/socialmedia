@@ -7,7 +7,11 @@ angular.module('users').config(['$stateProvider',
 		$stateProvider.
 		state('profile', {
 			url: '/settings/profile',
-			templateUrl: 'modules/users/views/settings/edit-profile.client.view.html'
+			templateUrl: 'modules/users/views/settings/edit-profile.client.view.jade'
+		}).
+		state('viewprofile', {
+			url: '/view/profile',
+			templateUrl: 'modules/users/views/settings/view-profile.client.view.jade'
 		}).
 		state('password', {
 			url: '/settings/password',
