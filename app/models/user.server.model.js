@@ -22,6 +22,9 @@ var validateLocalStrategyPassword = function(password) {
 };
 
 var validateLocalStrategyNumberID = function(number) {
+	return (this.provider !== 'local' || (number && number.length == 13));
+};
+var validateLocalStrategyNumberTel = function(number) {
 	return (this.provider !== 'local' || (number && number.length == 10));
 };
 /**
@@ -39,6 +42,12 @@ var UserSchema = new Schema({
 		trim: true,
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+	},
+	titleName: {
+		type: String,
+		trim: true,
+		default: '',
+		validate: [validateLocalStrategyProperty, 'Please fill in your title name']
 	},
 	displayName: {
 		type: String,
@@ -67,6 +76,84 @@ var UserSchema = new Schema({
 		validate: [validateLocalStrategyNumberID, 'เลขบัตรประชาชนไม่ถูกต้อง']
 	},
 	userpicture: {
+		type: String
+	},
+	bday: {
+		type: Date,
+		
+	},
+	tel: {
+		type: String,
+		validate: [validateLocalStrategyNumberTel, 'เบอร์โทรไม่ถูกต้อง']
+	},
+	address: {
+		type: String
+	},
+	typeofwork: {
+		type: String
+	},
+	positionofwork: {
+		type: String
+	},
+	salaryprefer_min: {
+		type: String
+	},
+	salaryprefer_max: {
+		type: String
+	},
+	provinceprefer: {
+		type: String
+	},
+	exp_company: {
+		default:'',
+		type: String
+	},
+	exp_position: {
+		default:'',
+		type: String
+	},
+	exp_start: {
+		default:'',
+		type: Date
+	},
+	exp_end: {
+		default:'',
+		type: Date
+	},
+	distype: {
+		type: String
+	},
+	disdetail: {
+		type: String
+	},
+	edulevel: {
+		type: String
+	},
+	educountry: {
+		type: String
+	},
+	eduinstitute: {
+		type: String
+	},
+	edufaculty: {
+		type: String
+	},
+	edumajor: {
+		type: String
+	},
+	eduyeargrad: {
+		type: String
+	},
+	edugpa: {
+		type: String
+	},
+	eduprize: {
+		type: String
+	},
+	edulang: {
+		type: String
+	},
+	edutalent: {
 		type: String
 	},
 	salt: {

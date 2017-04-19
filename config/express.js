@@ -5,6 +5,7 @@
  */
 var fs = require('fs'),
 	http = require('http'),
+	socketio = require('socket.io'),
 	https = require('https'),
 	express = require('express'),
 	morgan = require('morgan'),
@@ -23,8 +24,10 @@ var fs = require('fs'),
 	consolidate = require('consolidate'),
 	path = require('path');
 
-var index = require('../routes/index');
-var uploads = require('../routes/uploads');
+	var index = require('../routes/index');
+	var uploads = require('../routes/uploads');
+	var io = require('socket.io')(http);
+	var mongoChat = require('../app/mongo_chat');
 
 module.exports = function(db) {
 	// Initialize express app
@@ -123,6 +126,33 @@ module.exports = function(db) {
 	app.use('/', index);
 	app.use('/uploads', uploads);
 
+	var server = http.createServer(app);
+        var io = socketio.listen(server);
+        app.set('socketio', io);
+        app.set('server', server);
+
+	var users = {};
+	var WhisperChek = false;
+	var storage=[];
+	app.get('/', function (req, res) {
+	    res.sendfile('public/modules/tweets/views/chat2.client.view.html');
+	});
+	//socket connection
+	    io.on('connection', function (socket) {
+	        //console.log('Someone connected!');
+	        mongoChat.mognolizer(io,socket, users, WhisperChek);
+	        function updateNicknames() {
+	            io.emit('nickname', Object.keys(users));
+	        }
+	//disconnect socket
+	        socket.on('disconnect', function (data) {
+	            if (!socket.Username)return;
+	            delete users[socket.Username];
+	            updateNicknames();
+	        });
+	    });
+
+	
 	// Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
 	app.use(function(err, req, res, next) {
 		// If the error object doesn't exists
@@ -162,6 +192,7 @@ module.exports = function(db) {
 		// Return HTTPS server instance
 		return httpsServer;
 	}
+
 
 	// Return Express server instance
 	return app;

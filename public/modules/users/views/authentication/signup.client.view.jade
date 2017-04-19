@@ -10,19 +10,27 @@ html.
     <form name="userForm" data-ng-submit="signup()" novalidate="novalidate" autocomplete="off">
       <label class="col-md-4 labelRequest control-label">ชื่อผู้ใช้งาน*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="text" placeholder="Username" data-ng-model="credentials.username"/>
+        <input class="form-control" type="text" placeholder="ชื่อผู้ใช้งาน" data-ng-model="credentials.username"/>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">คำนำหน้าชื่อ*</label>
+      <div class="col-md-4 labelRequest control-label">
+          <input type="radio"  data-ng-model="credentials.titleName" value="นาย" ng-click="uncheck($event)"/> : นาย
+          <input type="radio" data-ng-model="credentials.titleName" value="นาง" ng-click="uncheck($event)" /> : นาง
+          <input type="radio" data-ng-model="credentials.titleName" value="นางสาว" ng-click="uncheck($event)"/> : นางสาว
       </div>
       <br><br>
 
       <label class="col-md-4 labelRequest control-label">ชื่อ*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="text" placeholder="Firstname" data-ng-model="credentials.firstName"/>
+        <input class="form-control" type="text" placeholder="ชื่อ" data-ng-model="credentials.firstName"/>
       </div>
       <br><br>
 
       <label class="col-md-4 labelRequest control-label">นามสกุล*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="text" placeholder="Lastname" data-ng-model="credentials.lastName"/>
+        <input class="form-control" type="text" placeholder="นามสกุล" data-ng-model="credentials.lastName"/>
       </div>
       <br><br>
 
@@ -34,31 +42,296 @@ html.
 
       <label class="col-md-4 labelRequest control-label">รหัสผ่าน*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="password" placeholder="Password" data-ng-model="credentials.password"/>
+        <input class="form-control" type="password" placeholder="รหัสผ่าน" data-ng-model="credentials.password"/>
       </div>
       <br><br>
 
       <label class="col-md-4 labelRequest control-label">ยืนยันรหัสผ่าน*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="password" placeholder="Password" />
+        <input class="form-control" type="password" placeholder="ยืนยันรหัสผ่าน" />
       </div>
       <br><br>
 
 
       <label class="col-md-4 labelRequest control-label">เลขบัตรประจำตัวคนพิการ/เลขบัตรประจำตัวประชาชน*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="int" placeholder="idnumber" data-ng-model="credentials.idnumber"  />
+        <input class="form-control" type="int" placeholder="เลขบัตรประจำตัว" data-ng-model="credentials.idnumber"  />
       </div>
       <br><br><br>
 
       
       <label class="col-md-4 labelRequest control-label">รูปภาพประจำตัว</label>
       <div class="col-md-4 labelRequest control-label">
+        <img  class="thumb select-zone" ngf-thumbnail="userpicture">
         <button class="btn btn-primary" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">เลือกไฟล์รูปภาพ</button>
-        <img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="credentials.userpicture">
+        
+      </div>
+      <br><br><br><br><br><br><br><br>
+      <label class="col-md-4 labelRequest control-label">วันเกิด</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="date" placeholder="วันเกิด" data-ng-model="credentials.bday" ng-change='checkErrBD(credentials.bday)' />
+      </div><span>{{errMessageBD}}</span>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">เบอร์โทรศัพท์</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="tel" placeholder="เบอร์โทรศัพท์" data-ng-model="credentials.tel"/>
       </div>
       <br><br>
 
+      <label class="col-md-4 labelRequest control-label">ที่อยู่</label>
+      <div class="col-md-4 labelRequest control-label">
+        <textarea class="form-control" type="text" placeholder="ที่อยู่" data-ng-model="credentials.address"/></textarea>
+      </div>
+      <br><br><br>
+
+      <label class="col-md-4 labelRequest control-label">ประเภทงานที่สนใจ</label>
+      <div class="col-md-4 labelRequest control-label">
+        <input class="form-control" type="text" placeholder="ประเภทงานที่สนใจ" data-ng-model="credentials.typeofwork"/>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">ตำแหน่งงานที่สนใจ</label>
+      <div class="col-md-4 labelRequest control-label">
+        <select data-ng-model="credentials.positionofwork.singleSelect" class="form-control" name="positionofwork" id="positionofwork" >
+        <option value="">---ตำแหน่งงานที่สนใจ---</option> 
+        <option value='การตลาด'>การตลาด</option>
+        <option value='ประชาสัมพันธ์' >ประชาสัมพันธ์</option>
+        <option value='การผลิต' >การผลิต</option>
+        <option value='การศึกษา/วิชาการ' >การศึกษา/วิชาการ</option>
+        <option value='ขนส่ง' >ขนส่ง</option>
+        <option value='ฝ่ายขาย' >ฝ่ายขาย</option>
+        <option value='บริการลูกค้า' >บริการลูกค้า</option>
+        <option value='ฝ่ายจัดซื้อ' >ฝ่ายจัดซื้อ</option>
+        <option value='ท่องเที่ยวและโรงแรม' >ท่องเที่ยวและโรงแรม</option>
+        <option value='อาหารและเครื่องดื่ม' >อาหารและเครื่องดื่ม</option>
+        <option value='การเงินและธนาคาร'>การเงินและธนาคาร</option>
+        <option value='ทรัพยากรบุคคล' >ทรัพยากรบุคคล</option>
+        <option value='บริการเฉพาะทาง' >บริการเฉพาะทาง</option>
+        <option value='บัญชี' >บัญชี</option>
+        <option value='หน่วยงานราชการ' >หน่วยงานราชการ</option>
+        <option value='โภชนาการ/สุขภาพ/ความงาม' >โภชนาการ/สุขภาพ/ความงาม</option>
+        <option value='ออกแบบ' >ออกแบบ</option>
+        <option value='ไอที' >ไอที</option>
+        <option value='อื่นๆ' >อื่นๆ</option>
+        </select>
+      </div>
+      <br><br>
+      
+
+      <label class="col-md-4 labelRequest control-label">เงินเดือนที่ต้องการ</label>
+      <div class="col-md-8">
+        <div style="padding:0px;" class="col-md-2 labelRequest control-label">
+          <input  class=" form-control" type="text" placeholder="บาท" data-ng-model="credentials.salaryprefer_min" />
+        </div><label class="col-md-2">&nbsp; ถึง </label>
+        <div style="padding:0px;" class="col-md-2 labelRequest control-label">
+          <input class="form-control" type="text" placeholder="บาท" data-ng-model="credentials.salaryprefer_max"/>
+        </div>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">จังหวัดที่ต้องการทำงาน</label>
+      <div class="col-md-4 labelRequest control-label">
+        <select data-ng-model="credentials.provinceprefer.singleSelect" class="form-control" name="typeofwork" id="typeofwork" >
+        <option value="">---เลือกจังหวัด---</option> <!-- not selected / blank option -->
+        <option value='กรุงเทพมหานคร'>กรุงเทพมหานคร</option>
+        <option value='กระบี่' >กระบี่</option>
+        <option value='กาญจนบุรี' >กาญจนบุรี</option>
+        <option value='กาฬสินธุ์' >กาฬสินธุ์</option>
+        <option value='กำแพงเพชร' >กำแพงเพชร</option>
+        <option value='ขอนแก่น' >ขอนแก่น</option>
+        <option value='จันทบุรี' >จันทบุรี</option>
+        <option value='ฉะเชิงเทรา' >ฉะเชิงเทรา</option>
+        <option value='ชลบุรี' >ชลบุรี</option>
+        <option value='ชัยนาท' >ชัยนาท</option>
+        <option value='ชัยภูมิ'>ชัยภูมิ</option>
+        <option value='ชุมพร' >ชุมพร</option>
+        <option value='เชียงราย' >เชียงราย</option>
+        <option value='เชียงใหม่' >เชียงใหม่</option>
+        <option value='ตรัง' >ตรัง</option>
+        <option value='ตราด' >ตราด</option>
+        <option value='ตาก' >ตาก</option>
+        <option value='นครนายก' >นครนายก</option>
+        <option value='นครปฐม' >นครปฐม</option>
+        <option value='นครพนม' >นครพนม</option>
+        <option value='นครราชสีมา' >นครราชสีมา</option>
+        <option value='นครศรีธรรมราช' >นครศรีธรรมราช</option>
+        <option value='นครสวรรค์' >นครสวรรค์</option>
+        <option value='นนทบุรี' >นนทบุรี</option>
+        <option value='นราธิวาส' >นราธิวาส</option>
+        <option value='น่าน' >น่าน</option>
+        <option value='บึงกาฬ' >บึงกาฬ</option>
+        <option value='บุรีรัมย์' >บุรีรัมย์</option>
+        <option value='ปทุมธานี' >ปทุมธานี</option>
+        <option value='ประจวบคีรีขันธ์' >ประจวบคีรีขันธ์</option>
+        <option value='ปราจีนบุรี' >ปราจีนบุรี</option>
+        <option value='ปัตตานี' >ปัตตานี</option>
+        <option value='พระนครศรีอยุธยา' >พระนครศรีอยุธยา</option>
+        <option value='พังงา' >พังงา</option>
+        <option value='พัทลุง' >พัทลุง</option>
+        <option value='พิจิตร' >พิจิตร</option>
+        <option value='พิษณุโลก' >พิษณุโลก</option>
+        <option value='เพชรบุรี' >เพชรบุรี</option>
+        <option value='เพชรบูรณ์' >เพชรบูรณ์</option>
+        <option value='แพร่' >แพร่</option>
+        <option value='พะเยา' >พะเยา</option>
+        <option value='ภูเก็ต' >ภูเก็ต</option>
+        <option value='มหาสารคาม' >มหาสารคาม</option>
+        <option value='มุกดาหาร' >มุกดาหาร</option>
+        <option value='แม่ฮ่องสอน' >แม่ฮ่องสอน</option>
+        <option value='ยะลา' >ยะลา</option>
+        <option value='ยโสธร' >ยโสธร</option>
+        <option value='ร้อยเอ็ด' >ร้อยเอ็ด</option>
+        <option value='ระนอง' >ระนอง</option>
+        <option value='ระยอง' >ระยอง</option>
+        <option value='ราชบุรี' >ราชบุรี</option>
+        <option value='ลพบุรี' >ลพบุรี</option>
+        <option value='ลำปาง' >ลำปาง</option>
+        <option value='ลำพูน' >ลำพูน</option>
+        <option value='เลย' >เลย</option>
+        <option value='ศรีสะเกษ' >ศรีสะเกษ</option>
+        <option value='สกลนคร' >สกลนคร</option>
+        <option value='สงขลา' >สงขลา</option>
+        <option value='สตูล' >สตูล</option>
+        <option value='สมุทรปราการ' >สมุทรปราการ</option>
+        <option value='สมุทรสงคราม' >สมุทรสงคราม</option>
+        <option value='สมุทรสาคร' >สมุทรสาคร</option>
+        <option value='สระแก้ว' >สระแก้ว</option>
+        <option value='สระบุรี' >สระบุรี</option>
+        <option value='สิงห์บุรี' >สิงห์บุรี</option>
+        <option value='สุโขทัย' >สุโขทัย</option>
+        <option value='สุพรรณบุรี' >สุพรรณบุรี</option>
+        <option value='สุราษฎร์ธานี' >สุราษฎร์ธานี</option>
+        <option value='สุรินทร์' >สุรินทร์</option>
+        <option value='หนองคาย' >หนองคาย</option>
+        <option value='หนองบัวลำภู' >หนองบัวลำภู</option>
+        <option value='อ่างทอง' >อ่างทอง</option>
+        <option value='อุดรธานี' >อุดรธานี</option>
+        <option value='อุทัยธานี' >อุทัยธานี</option>
+        <option value='อุตรดิตถ์' >อุตรดิตถ์</option>
+        <option value='อุบลราชธานี' >อุบลราชธานี</option>
+        <option value='อำนาจเจริญ' >อำนาจเจริญ</option>
+        </select>
+      </div>
+      <br><br>
+
+      <label class="col-md-4 labelRequest control-label">ประสบการณ์ทำงาน</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input type="radio" data-ng-click="haveExp = 1" ng-model="checked" value="500" ng-click="uncheck($event)" /> มี
+          <input type="radio" data-ng-click="haveExp = 0" ng-model="checked" value="1000" ng-click="uncheck($event)" /> ไม่มี
+        
+      </div>
+      <br><br>
+      <div ng-show='haveExp'>
+        <label  class="col-md-4 labelRequest control-label">องค์กร/บริษัทที่เคยทำงาน</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="text" placeholder="องค์กร/บริษัทที่เคยทำงาน" data-ng-model="credentials.exp_company"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">ตำแหน่งที่เคยทำงาน</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="text" placeholder="ตำแหน่งที่เคยทำงาน" data-ng-model="credentials.exp_position"/>
+        </div>
+        <br><br>
+
+        <label ng-show='haveExp' class="col-md-4 labelRequest control-label">เริ่มงาน</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="date" placeholder="เริ่มงาน" data-ng-model="credentials.exp_start" ng-change='checkErrDate(credentials.exp_start,credentials.exp_end)'/>
+        </div>
+        <br><br>
+        <label class="col-md-4 labelRequest control-label">สิ้นสุดงาน</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="date" placeholder="สิ้นสุดงาน" data-ng-model="credentials.exp_end" ng-change='checkErrDate(credentials.exp_start,credentials.exp_end)'/>
+        </div><span>{{errMessage}}</span>
+        <br><br>
+      </div>
+      
+
+      <label  class="col-md-4 labelRequest control-label">ระดับการศึกษา</label>
+        <div class="col-md-4 labelRequest control-label">
+          <select data-ng-model="credentials.edulevel.singleSelect"  class="form-control" name="edulevel" id="edulevel" >
+             <option value="">---ระดับการศึกษา---</option> 
+            <option value='อ่านออกเขียนได้'>อ่านออกเขียนได้</option>
+            <option value='ประถมศึกษา'>ประถมศึกษา</option>
+            <option value='มัธยมศึกษาตอนต้น(ม.3)'>มัธยมศึกษาตอนต้น(ม.3)</option>
+            <option value='มัธยมศึกษาตอนปลาย(ม.6)'>มัธยมศึกษาตอนปลาย(ม.6)</option>
+            <option value='ประกาศนียบัตรวิชาชีพ(ปวช.)'>ประกาศนียบัตรวิชาชีพ(ปวช.)</option>
+            <option value='ประกาศนียบัตรวิชาชีพชั้นสูง(ปวส.)'>ประกาศนียบัตรวิชาชีพชั้นสูง(ปวส.)</option>
+            <option value='ประกาศนียบัตรวิชาชีพเทคนิค(ปวท.)'>ประกาศนียบัตรวิชาชีพเทคนิค(ปวท.)</option>
+            <option value='อนุปริญญา'>อนุปริญญา</option>
+            <option value='ปริญญาตรี'>ปริญญาตรี</option>
+            <option value='ปริญญาโท'>ปริญญาโท</option>
+            <option value='ปริญญาเอก'>ปริญญาเอก</option>
+          </select>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">ประเทศที่จบ</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="text" placeholder="ประเทศที่จบ" data-ng-model="credentials.educountry"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">ชื่อสถาบันการศึกษา</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="text" placeholder="ชื่อสถาบันการศึกษา" data-ng-model="credentials.eduinstitute"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">คณะ</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="text" placeholder="คณะ" data-ng-model="credentials.edufaculty"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">สาขา</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="text" placeholder="สาขา" data-ng-model="credentials.edumajor"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">ปีพ.ศ.ที่จบการศึกษา</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="int" placeholder="ปีพ.ศ.ที่จบการศึกษา" data-ng-model="credentials.eduyeargrad"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">คะแนนเฉลี่ย (GPA)</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="int" placeholder="คะแนนเฉลี่ย" data-ng-model="credentials.edugpa"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">รางวัล/ความสำเร็จ/เกียรตินิยม</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="int" placeholder="รางวัล/ความสำเร็จ/เกียรตินิยม" data-ng-model="credentials.eduprize"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">ทักษะทางด้านภาษา</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="int" placeholder="ทักษะทางด้านภาษา" data-ng-model="credentials.edulang"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">ทักษะอื่นๆ</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="int" placeholder="ทักษะอื่นๆ" data-ng-model="credentials.edutalent"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">ประเภทความพิการ</label>
+        <div class="col-md-4 labelRequest control-label">
+          <input class="form-control" type="int" placeholder="ประเภทความพิการ" data-ng-model="credentials.distype"/>
+        </div>
+        <br><br>
+
+        <label  class="col-md-4 labelRequest control-label">รายละเอียดความพิการ</label>
+        <div class="col-md-4 labelRequest control-label">
+          <textarea class="form-control" type="text" placeholder="รายละเอียดความพิการ" data-ng-model="credentials.disdetail"/></textarea>
+        </div>
+        <br><br>
 
       <div class="form-group text-right">
         <button class="btn btn-primary" type="submit">ลงทะเบียน</button>

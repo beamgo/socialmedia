@@ -14,6 +14,8 @@
     "angular-bootstrap": "~0.11.2",
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.11",
-    "ng-flow": "~2"
+    "ng-flow": "~2",
+    "angular-socket-io": "^0.7.0",
+    "socket.io-client": "^1.7.2"
   }
 }

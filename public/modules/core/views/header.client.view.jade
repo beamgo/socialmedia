@@ -11,19 +11,13 @@ html.
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" data-ui-sref="feed">Enabled</a>
+      <img style='width:70px; height:50px;' src='/img/logo.png'></img>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling-->
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-left">
-                <li>
-                    <a data-ng-if="authentication.user" href="c-mainbrowse.php">ค้นหางาน</a>
-                </li>
-                
-                <li>
-                    <a data-ng-if="authentication.user" href="c-edit-1.php">แก้ไขข้อมูลส่วนตัว</a>
-                </li>
+ 
       </ul>
       <div class="nav navbar-nav navbar-right" style="text-align:right;">
         <div style="font-size: 14px" id="divFontSize">
@@ -49,8 +43,8 @@ html.
           <div class="clearfix"></div>
         </div>
       </div>
-      <form class="navbar-form navbar-right" role="signin" data-ng-if="!authentication.user"><a class="btn btn-default" data-ui-sref="signin">Sign in</a><a class="btn btn-primary" data-ui-sref="signup">Sign up</a></form>
-      <form class="navbar-form navbar-right" role="signout" data-ng-if="authentication.user"><a class="btn btn-primary" href="/auth/signout">Sign out</a></form>
+      <form class="navbar-form navbar-right" role="signin" data-ng-if="!authentication.user"><a class="btn btn-default" data-ui-sref="signin">เข้าสู่ระบบ</a><a class="btn btn-primary" data-ui-sref="signup">ลงทะเบียน</a></form>
+      <form class="navbar-form navbar-right" role="signout" data-ng-if="authentication.user"><a class="btn btn-primary" href="/auth/signout">ออกจากระบบ</a></form>
     </div>
   
   </div>

@@ -26,7 +26,7 @@ html.
           <div class="w3-container">
           <br>
             <div style="width:100%;" class="input-group add-on">
-              <input ng-model="query" style="width:100%;" class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+              <input ng-model="query" style="width:100%;" class="form-control" placeholder="ค้นหา" name="srch-term" id="srch-term" type="text">
               <div class="input-group-btn">
                 <button class="btn btn-basic" type="submit"><i class="glyphicon glyphicon-search"></i></button>
               </div>
@@ -143,27 +143,29 @@ html.
       <div class="w3-col m2">
         <div class="w3-card-2 w3-round w3-white w3-center">
           <div style="padding:0px;" class="w3-container">
-            <h3>เลือกผู้สนทนา</h3>
+            <h3><i class="fa fa-group"></i> ผู้สนทนา</h3>
             <hr>
             <div id="Demo1" class="w3-hide w3-animate-left w3-show">
+                <a style="padding-left:0px; width:100%; max-width:219px;"  class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey"  id="firstTab" data-ng-repeat="user in users" data-ng-click="redirectToChat()" >
+                  <div class="w3-container">
+                    <img align="left" class="w3-round" ng-src="{{user.userpicture}}" style="max-height: 53.1px; width:30%;"><span class=" w3-large">{{user.username}}</span>
+                    
+                    
+                  </div>
+                </a>
+
+
                 <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
                   <div class="w3-container">
-                    <img class="w3-round w3-margin-right" src="img/p-half_0001.png" style="width:30%;"><span class=" w3-large">Rani Mukharji</span>
-                    <p>@Rani</p>
+                    <img align="left" class="w3-round w3-margin-right" src="img/p-half_0002.png" style="width:30%;"><span class=" w3-large">ดาวใจ </span>
+                    
                     
                   </div>
                 </a>
                 <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
                   <div class="w3-container">
-                    <img class="w3-round w3-margin-right" src="img/p-half_0002.png" style="width:30%;"><span class=" w3-large">ดาวใจ เพ็ญพักตร์</span>
-                    <p>@ดาวใจ</p>
+                    <img align="left" class="w3-round w3-margin-right" src="img/p-half_0003.png" style="width:30%;"><span class=" w3-large">Sira </span>
                     
-                  </div>
-                </a>
-                <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
-                  <div class="w3-container">
-                    <img class="w3-round w3-margin-right" src="img/p-half_0003.png" style="width:30%;"><span class=" w3-large">Sira Pattatul</span>
-                    <p>@Sira</p>
                     
                   </div>
                 </a>
@@ -185,7 +187,5 @@ html.
   <br>
 
   <!-- Footer -->
-  <footer class="w3-container w3-theme-d3 w3-padding-16">
-    
-  </footer>
+ 
 

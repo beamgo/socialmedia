@@ -7,6 +7,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 
 		// If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
+
 		$scope.userpicture = '';
 		$scope.uploadFiles = function(file, errFiles) {
 	        $scope.f = file;
@@ -33,15 +34,18 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 	            });
 	        }
 	          
-	    }
+	    };
 
 		$scope.signup = function() {
 			console.log("credentials "+$scope.credentials);
 			console.log("credentials username "+$scope.credentials.username);
 			$scope.credentials.userpicture = $scope.userpicture;
+			$scope.credentials.positionofwork = $scope.credentials.positionofwork.singleSelect;
+			$scope.credentials.provinceprefer = $scope.credentials.provinceprefer.singleSelect;
+			$scope.credentials.edulevel = $scope.credentials.edulevel.singleSelect;
 			console.log("credentials "+$scope.credentials.userpicture);
 			$http.post('/auth/signup', $scope.credentials).success(function(response) {
-				// If successful we assign the response to the global user model
+				// If successful we assign the response to the global user day
 				$scope.authentication.user = response;
 
 				// And redirect to the index page
@@ -53,7 +57,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 
 		$scope.signin = function() {
 			$http.post('/auth/signin', $scope.credentials).success(function(response) {
-				// If successful we assign the response to the global user model
+				// If successful we assign the response to the global user day
 				$scope.authentication.user = response;
 
 				// And redirect to the index page
@@ -62,5 +66,31 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.error = response.message;
 			});
 		};
+		$scope.uncheck = function (event) {
+        	if ($scope.checked == event.target.value) $scope.checked = false
+    	};
+	    $scope.checkErrBD = function(BirthDate) {
+	        $scope.errMessageBD = '';
+	        var curDate = new Date('2002-01-01');
+	        
+	        if(new Date(BirthDate) > curDate){
+	           $scope.errMessageBD = 'วันเกิดผิดพลาด กรุณากรอกใหม่';
+	           return false;
+	        }
+	    };
+	    $scope.checkErrDate = function(startDate,endDate) {
+	        $scope.errMessage = '';
+	        var curDate = new Date();
+	        
+	        if(new Date(startDate) > new Date(endDate)){
+	          $scope.errMessage = 'วันสิ้นสุดไม่ควรเกินวันเริ่มต้น';
+	          return false;
+	        }
+	        if(new Date(startDate) > curDate){
+	           $scope.errMessage = 'วันเริ่มต้นไม่ควรเกินปัจจุบัน';
+	           return false;
+	        }
+	    };
+	    
 	}
 ]);

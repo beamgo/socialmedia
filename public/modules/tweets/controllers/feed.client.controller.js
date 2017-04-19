@@ -58,7 +58,18 @@ angular.module('tweets').controller('FeedController', [
         $http.get('/uploads').then(function(response){
             console.log(response.data);
             $scope.uploads = response.data;
-          });
+        });
+
+
+        $http.get('/getAllUser')
+        .success(function(response) {
+            $scope.users = response;
+            console.log("all users "+$scope.users[0].username);
+        })
+        .error(function(response) {
+            $scope.error = response.message;
+        });
+
 
         $http.get('/statuses/news_feed')
         .success(function(response) {
@@ -210,6 +221,10 @@ angular.module('tweets').controller('FeedController', [
         $scope.redirectToProfile = function(){
             console.log('go');
             $location.path('/view/profile');
+        };
+        $scope.redirectToChat = function(){
+            console.log('go chat');
+            $location.path('/chat');
         };
        
 

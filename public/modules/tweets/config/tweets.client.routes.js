@@ -13,6 +13,10 @@ angular.module('tweets')
             url: '/',
             templateUrl: '/modules/tweets/views/feed.client.view.jade'
         })
+        .state('chat', {
+            url: '/chat',
+            templateUrl: '/modules/tweets/views/chat2.client.view.jade'
+        })
         .state('usertimeline', {
             url: '/u/:username',
             templateUrl: '/modules/tweets/views/usertimeline.client.view.jade'

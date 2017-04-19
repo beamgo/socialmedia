@@ -23,7 +23,8 @@ angular.module('users').config(['$stateProvider',
 		}).
 		state('signup', {
 			url: '/signup',
-			templateUrl: 'modules/users/views/authentication/signup.client.view.jade'
+			templateUrl: 'modules/users/views/authentication/signup.client.view.jade',
+			js: ['modules/users/views/authentication/signup.js']
 		}).
 		state('firstsignup', {
 			url: '/firstsignup',

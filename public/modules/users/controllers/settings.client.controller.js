@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication','$timeout',
+	function($scope, $http, $location, Users, Authentication, $timeout) {
 		$scope.user = Authentication.user;
+		console.log('$scope.user'+$scope.user);
 
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
@@ -47,7 +48,11 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 				user.$update(function(response) {
 					$scope.success = true;
 					Authentication.user = response;
-					$location.path('/');
+					$timeout(function(){ 
+					  
+					  console.log('updateUserProfile');
+					  $location.path("/view/profile"); 
+					},2000);
 				}, function(response) {
 					$scope.error = response.data.message;
 				});
@@ -70,6 +75,12 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		};
 		$scope.redirectToEdit = function() {
 			$location.path('/settings/profile');
-		}
+		};
+		$scope.redirectToProfile = function(){
+            $location.path('/view/profile');
+        };
+        $scope.redirectToFeed = function(){
+            $location.path('/');
+        };
 	}
 ]);

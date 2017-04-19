@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'twister';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils','flow','ngFileUpload'];
+	var applicationModuleVendorDependencies = ['ngResource','btford.socket-io', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize', 'ui.router', 'ui.bootstrap', 'ui.utils','flow','ngFileUpload','routeStyles','ngRoute'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

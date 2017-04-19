@@ -1,0 +1,151 @@
+html.
+	<br><br>
+	<div class="recognize-user"></div>
+	<!--MESSAGE OUTPUT-->
+	<div class='ui tertiary compact segment chatty'>
+	    <span class="desktop-header">
+	    <div style="text-align: center; margin: 0"><h3>ห้องสนทนา</h3></div>
+	    <h4 style="margin: 0" class="ui horizontal header divider">
+	        <i class="comment icon"></i>
+	    </h4>
+	    </span>
+
+	    <div class="ui comments messages">
+	        <div id="preloader"  style="text-align: center"></div>
+	    </div>
+
+	    <!--space-->
+	    <div class="space"></div>
+
+	</div>
+	<!--end ui compact segment-->
+
+	<!--FOOTER / FORM INPUT-->
+	<footer>
+	    <form class="ui form">
+	        <!--USERNAME AVATAR-->
+	        <div class="two fields">
+	            <div class="field" style="background: #efefef">
+	                <form class="ui form">
+	                    <!--status -->
+	                    <div class="ui message chat-status alert alert-info" style="color: darkred" role="alert">Status:
+	                        <span></span>
+	                    </div>
+	                    <ul class="drop">
+
+	                        <li class="user">
+	                            <div class="menu">
+	                                <input class="chat" id="ChatName" type="text" name="name" placeholder="username*">
+	                            </div>
+	                        </li>
+
+	                        <li class="li-avatar">
+	                            <div style="color: darkred">Avatar</div>
+	                            <!--<div class="ui dropdown">-->
+	                            <div class="ui search dropdown">
+
+	                                <i class="dropdown icon"></i>
+
+	                                <div class="text"></div>
+
+	                                <!--<div class="menu" style="text-align: center">
+	                                    <div class="item"><img src='avatar/joe.jpg' alt="avatar"/></div>
+	                                    <div class="item"><img src='avatar/jenny.jpg' alt="avatar"/></div>
+	                                    <div class="item"><img src='avatar/elliot.jpg' alt="avatar"/></div>
+	                                    <div class="item"><img src='avatar/matt.jpg' alt="avatar"/></div>
+	                                    <div class="item"><i class='user icon' style="font-size: 1.5em"></i></div>
+	                                </div>-->
+	                            </div>
+	                        </li>
+	                        <!--WHOISONLINE-->
+	                        <li>
+	                            <div style="color: darkred">online</div>
+	                            <div class="ui  dropdown">
+	                                <div class="text"></div>
+
+	                                <i class="dropdown icon"></i>
+
+	                                <div class="menu">
+	                                    <ul class="username"></ul>
+
+	                                </div>
+	                            </div>
+	                        </li>
+
+
+	                        <!--WHISPERTO-->
+	                        <li>
+	                            <button id="whisper_button_first_view" type="button" class="ui icon basic  button " ><i
+	                                class="spy icon"></i>
+	                            </button>
+	                                    <select name="whisper" id="whisperTo" class="whisper" >
+	                                        <option value=""> whisper</option>
+	                                    </select>
+	                        </li>
+
+	                        <!--Reset session storage-->
+	                        <li>
+	                            <button class="ui icon basic button" id="empty-storage"><i class="remove user icon"></i>
+	                            </button>
+	                        </li>
+
+	                    </ul>
+
+
+	                    <br/>
+	                    <br/>
+
+	                    <div style="text-align: center">
+	                        <textarea class="msg" type="text" placeholder="message" cols="1" rows="1"></textarea>
+
+	                        <button submit='submit' id="submit" type="submit" class="ui blue icon button" >
+	                            <i class="comment icon"></i>
+	                        </button>
+	                        <button id="whisper_button" type="submit" class="ui icon blue  button " ><i
+	                            class="spy icon"></i>
+	                        </button>
+	                        <button id="whisperStop" type="submit" class="ui basic icon button" >
+	                            <i class="ban icon"></i>
+	                        </button>
+
+	                    </div>
+	                </form>
+	            </div>
+	            <!--end field-->
+
+
+	        </div>
+	        <!--end two fields-->
+
+	    </form>
+
+	    <div style="text-align: center">
+	        <small style="font-size: 0.6em">&copy; Simon Lackmann 2015 - NodeJs Mongodb Socket.io Realtime
+	            chat
+	        </small>
+	    </div>
+
+	</footer>
+	<div class="row">
+	    <div class="col-xs-6">
+	        <a class="active" id="login-form-link" login-form="login-form">Login</a>
+	    </div>
+	    <div class="col-xs-6">
+	        <a id="register-form-link" register-form="register-form">Register</a>
+	    </div>
+	</div>
+		<!--connect to local NodeJs server for socket.io -->
+	<script src="socket.io/socket.io.js"></script>
+
+
+
+	<!--SERVER-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.js"></script>
+
+	<script src="/js/jquery.storageapi.min.js"></script>
+	<script src="/js/chat.js"></script>
+	<script src="/js/chat.js"></script>
+	<script>
+		console.log('js run');
+	</script>
