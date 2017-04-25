@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus',
-	function($scope, Authentication, Menus) {
+angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus','$rootScope',
+	function($scope, Authentication, Menus, $rootScope) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -11,9 +11,21 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		};
 
 		// Collapsing the menu after navigation
-		$scope.$on('$stateChangeSuccess', function() {
+		$scope.$on('$stateChangeSuccess', function(toState) {
 			$scope.isCollapsed = false;
+			
 		});
+		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            if (  toState.name !== 'firstsignup') {
+               $scope.isfirstsignup = true;
+               
+            }
+            else {
+				$scope.isfirstsignup = false;
+				
+			}
+           
+        });
 
 		$scope.clickBlackWhite = function() {
 			var elements = document.getElementsByTagName("body");

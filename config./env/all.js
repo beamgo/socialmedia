@@ -15,6 +15,7 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.css',
+				"http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
 
 			],
 			js: [

@@ -10,8 +10,9 @@ html.
       <div class="form-group">
         <input type="password" placeholder="รหัสผ่าน" data-ng-model="credentials.password" class="form-control"/>
       </div>
+
       <div class="form-group text-right">
-        <button type="submit" class="btn btn-default">เข้าสู่ระบบ</button>
+        {{error}}          <button type="submit" class="btn btn-default">เข้าสู่ระบบ</button>
       </div>
     </form>
   </div>

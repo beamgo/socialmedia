@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication','$timeout',
-	function($scope, $http, $location, Users, Authentication, $timeout) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication','$timeout','$filter',
+	function($scope, $http, $location, Users, Authentication, $timeout,$filter) {
 		$scope.user = Authentication.user;
 		console.log('$scope.user'+$scope.user);
 
@@ -16,7 +16,9 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 
 			return false;
 		};
-
+		 $scope.bday = $filter('date')($scope.user.bday, "dd/MM/yyyy");
+		 $scope.exp_start = $filter('date')($scope.user.exp_start, "dd/MM/yyyy");
+		 $scope.exp_end = $filter('date')($scope.user.exp_end, "dd/MM/yyyy");
 		// Check if provider is already in use with current user
 		$scope.isConnectedSocialAccount = function(provider) {
 			return $scope.user.provider === provider || ($scope.user.additionalProvidersData && $scope.user.additionalProvidersData[provider]);

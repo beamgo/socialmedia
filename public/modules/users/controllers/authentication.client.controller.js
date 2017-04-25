@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication','Upload',
-    '$timeout',
-	function($scope, $http, $location, Authentication, Upload, $timeout) {
+    '$timeout', '$location','$window',
+	function($scope, $http, $location, Authentication, Upload, $timeout, $window) {
 		$scope.authentication = Authentication;
 
 		// If user is signed in then redirect back home
@@ -49,7 +49,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.authentication.user = response;
 
 				// And redirect to the index page
-				$location.path('/');
+				$location.path('/signin');
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
@@ -61,9 +61,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.authentication.user = response;
 
 				// And redirect to the index page
-				$location.path('/');
+				$location.path('/index');
 			}).error(function(response) {
-				$scope.error = response.message;
+				$scope.error = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
 			});
 		};
 		$scope.uncheck = function (event) {
@@ -91,6 +91,14 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 	           return false;
 	        }
 	    };
-	    
+
+	    $scope.redirectToDisabled = function() {
+
+	    	$location.path('/signup');
+	    };
+	    $scope.redirectToCompany = function() {
+	    	var win = window.open();
+	    	win.location = 'http://localhost/enabled/c-register.php';
+	    };
 	}
 ]);

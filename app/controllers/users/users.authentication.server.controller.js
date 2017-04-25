@@ -83,7 +83,7 @@ exports.getAllUser = function(req, res, next) {
     if (req.user) {
         var username = req.user.username;
         console.log('req.user '+req.user.username);
-        User.find({}, function(err, users) {
+        User.find({ username: { $ne: username } }, function(err, users) {
             if (err) {
                 return res.status(400).send({
                     message: errorHandler.getErrorMessage(err)

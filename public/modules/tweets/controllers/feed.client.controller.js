@@ -13,43 +13,16 @@ angular.module('tweets').controller('FeedController', [
             name: Authentication.user.displayName,
             screenName: Authentication.user.username,
             userpicture: Authentication.user.userpicture,
+            exp_position: Authentication.user.exp_position,
+            edulevel: Authentication.user.edulevel,
+            bday: Authentication.user.bday,
             tweetCount: 2,
             followerCount: 34,
             followingCount: 140
         };
-
-        $scope.timeline = [
-            {
-                name: 'Arnupharp Viratanapanu',
-                screenName: 'topscores',
-                tweetText: 'My name is Top',
-                tweetTime: '2015-01-29T15:37:26+07:00',
-                tweetPic: '',
-                screenPicture:'img/p-half_0001.png'
-            },
-            {
-                name: 'Supasate Choochaisri',
-                screenName: 'kaizerwing',
-                tweetText: 'Hello World',
-                tweetTime: '2015-02-29T15:37:26+07:00',
-                screenPicture:'img/p-half_0002.png'
-            },
-            {
-                name: 'Somchai Jaidee',
-                screenName: 'somchaic',
-                tweetText: '555555555555555',
-                tweetTime: '2015-06-29T15:37:26+07:00',
-                tweetVid: ['uploads/345a2f36fd3e9f474c83698d5ab21f6f/IMG_4006.mp4'],
-                screenPicture:'img/p-half_0003.png'
-            },
-            {
-                name: 'Supasate Choochaisri',
-                screenName: 'kaizerwing',
-                tweetText: 'Sawasdee Thailand',
-                tweetTime: '2015-02-29T15:37:26+07:00',
-                screenPicture:'img/p-half_0004.png'
-            }
-        ];
+        $scope.reply = [];
+        $scope.timeline =[];
+       
         $scope.uploads =[];
         $scope.lastUploadPath = '';
         $scope.lastUploadName = '';
@@ -191,27 +164,60 @@ angular.module('tweets').controller('FeedController', [
                 }).error(function(response) {
                     $scope.error = response.message;
                 });
-            }, 3000);
+            } , 3000);
 
         };
 
         
 
-        $scope.replyTo = function(screenName) {
+        $scope.replyTo = function(screenName,text) {
             var modalInstance = $modal.open({
                 animation: true,
                 templateUrl: '/modules/tweets/views/replymodal.client.view.jade',
                 controller: 'ReplyModalController',
                 resolve: {
                     tweetText: function() {
-                        return '@' + screenName + ' ';
+                        return ;
                     }
                 }
             });
 
             modalInstance.result.then(function(tweetText) {
-                $scope.postTweet(tweetText, $scope.profile.name, $scope.profile.screenName,$scope.profile.userpicture);
+                $scope.postReply(text,tweetText, $scope.profile.name, $scope.profile.screenName,$scope.profile.userpicture);
             });
+            
+        };
+
+        $scope.postReply = function(text,tweetText, name, screenName, userpicture) {
+            $scope.reply.push({
+                text:text,
+                name: name,
+                screenName: screenName,
+                screenPicture: userpicture,
+                tweetText: tweetText,
+                tweetTime: new Date().toISOString(),
+            });
+            console.log('$scope.reply'+$scope.reply);
+            
+              $http.post('/statuses/reply', {
+                    id : text,
+                    reply: [
+                        {
+                        text:text,
+                        name: name,
+                        screenName: screenName,
+                        screenPicture: userpicture,
+                        tweetText: tweetText,
+                        tweetTime: new Date().toISOString()  
+                        }  
+                    ]    
+                }).success(function(response) {
+                    $scope.tweetText = '';
+                    $scope.tweetPic = [];
+                    $scope.tweetVid = '';
+                }).error(function(response) {
+                    $scope.error = response.message;
+                });
         };
 
         $scope.changekeyword = function(keyword){
@@ -221,10 +227,11 @@ angular.module('tweets').controller('FeedController', [
         $scope.redirectToProfile = function(){
             console.log('go');
             $location.path('/view/profile');
+            // $location.path('/index');
         };
-        $scope.redirectToChat = function(){
-            console.log('go chat');
-            $location.path('/chat');
+        $scope.redirectToChat = function(username_paticipant,userpicture_paticipant){
+            var win = window.open();
+            win.location = 'http://localhost:3000/chat.client.view.html?name='+Authentication.user.username+'='+username_paticipant+'='+Authentication.user.userpicture+'='+userpicture_paticipant;
         };
        
 

@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
 
 //-----------------------------------------------
 
@@ -37,12 +37,14 @@ $(function () {
 
     try {
         var socket = io.connect();
+        
     } catch (e) {
         console.log('Could not connect to socket.');
         console.log('socket '+socket);
     }
 
     if (socket !== undefined) {
+        
         console.log('Ok!');
 
 
@@ -63,14 +65,21 @@ $(function () {
         //   //START//   //
         //==============//
         $('#preloader').show();
-
+        var a = window.location.href.toString();
+        var b = decodeURIComponent(a);
+        console.log(b);
+        var p = b.split("=");
+        console.log(p[1],p[2],p[3],p[4]);  //ถ้าเจอวรรคแตกเก็บลง array t
+       
         //---check or init storage--//
+        storage.set('name',p[1]);
+        socket.emit('user_param',storage.get('name'),p[2]);
         if (storage.isSet('name')) {
             console.log("storageKey: " + storage.get('name'));
             socket.emit('storage', true);
-
+            
             recognizeUser.addClass('ui purple label animated bounceInLeft').html(
-                " <div class='header'>" +
+                "<div class='header'>" +
                 "Welcome back!<br><br/>" +
                 "<i class='user icon'></i><em>" + storage.get('name') + "</em>" +
                 "</div>" +
@@ -81,9 +90,11 @@ $(function () {
                 recognizeUser.addClass('animated bounceOutLeft');
 
             }, 5000);
+            
 
         } else {
             socket.emit('storage', false);
+            
 
             $('.recognize-user').html('');
 
@@ -106,14 +117,14 @@ $(function () {
 
             //check if storage_data ==true//
             storageData(storage_data);
+            console.log('data'+data);
 
 //                    $('#chatnamesavebutton').css({"display": "block"});
 //                for (var i = 0; i < data.length; i++) {
             html =
                 "<div class='comment animated bounceInDown'>" +
-                "<p class='avatar'>" +
-                dataAv(data.avatar) +
-                " </p>" +
+                "<p class='avatar'><img style='width:35px; height:35px;' src='"+data.avatar+"'/>"+
+                    "</p>" +
                 "<div class='content'>" +
                 "<a class='author'>" + dataN(data.name) + "</a>" +
                 "<div class='metadata'>" +
@@ -143,8 +154,8 @@ $(function () {
         //    RECEIVE SOCKET NICKNAME   //
         //==============================//
         socket.on('nickname', function (data) {
-
             nick_name(data);
+            console.log('data'+data[0]);
 
 
             $('#whisper_button_first_view').on('click', function () {
@@ -233,7 +244,7 @@ $(function () {
                     msg: textarea.val(),
                     date: date,
                     whisperStatus: whisperStatus,
-                    avatar: $avatar.html()
+                    avatar: p[3]
 
 
                 });
@@ -247,8 +258,9 @@ $(function () {
         //=======================//
         // OUTPUT AFTER SUBMIT  //
         //=====================//
-        socket.on('output', function (data) {
 
+        socket.on('output', function (data) {
+            console.log('name: ' + data.name);
             console.log('wcheck: ' + data.whisperStatus);
 
             if (data.whisperStatus) {
@@ -260,8 +272,7 @@ $(function () {
 
 
                     "<div class='comment animated bounceInDown'>" +
-                    "<p class='avatar'>" +
-                    dataAv(data.avatar) +
+                    "<p class='avatar'><img style='width:35px; height:35px;' src='"+data.avatar+"'/>"+
                     "</p>" +
                     "<div class='content'>" +
                     "<a class='author'>" + data.whisperFromName + "</a>" +
@@ -291,9 +302,8 @@ $(function () {
 
                 html =
                     "<div class='comment animated bounceInDown'>" +
-                    "<p class='avatar'>" +
-                    dataAv(data.avatar) +
-                    " </p>" +
+                    "<p class='avatar'><img style='width:35px; height:35px;' src='"+data.avatar+"'/>"+
+                    "</p>" +
                     "<div class='content'>" +
                     "<a class='author'>" + dataN(data.name) + "</a>" +
                     "<div class='metadata'>" +
@@ -390,9 +400,7 @@ $(function () {
         //    SUBMIT FORM       //
         //=====================//
         $('#submit').click(function (e) {
-            alert(e);
             e.preventDefault();
-
             var name = $('.chat');
 
 
@@ -446,9 +454,11 @@ $(function () {
                     name: name,
                     message: textarea.val(),
                     date: date,
-                    avatar: $avatar.html()
+                    avatar: p[3],
+                    paticipant:p[2]
 
                 });
+
 
             //=== clear input===//
             $('#m').val('');

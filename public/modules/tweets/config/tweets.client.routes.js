@@ -29,11 +29,12 @@ angular.module('tweets')
     'Authentication',
     function($rootScope, $state, Authentication) {
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            if ( (( toState.name !== 'signup') && ( toState.name !== 'signin')) &&
+            if ( (( toState.name !== 'firstsignup') && ( toState.name !== 'signup') && ( toState.name !== 'signin')) &&
                     !Authentication.user) {
                 event.preventDefault();
-                $state.go('signup');
+                $state.go('firstsignup');
             }
+            // $state.go('signup');
         });
     }
 ]);

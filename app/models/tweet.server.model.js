@@ -29,6 +29,9 @@ var TweetSchema = new Schema({
     },
     tweetVid: {
         type: Array
+    },
+    reply: {
+        type: Array
     } 
 });
 

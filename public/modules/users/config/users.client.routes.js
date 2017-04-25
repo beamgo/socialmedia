@@ -5,6 +5,14 @@ angular.module('users').config(['$stateProvider',
 	function($stateProvider) {
 		// Users state routing
 		$stateProvider.
+		state('firstsignup', {
+			url: '/firstsignup',
+			templateUrl: 'modules/users/views/authentication/before.signup.client.view.jade'
+		}).
+		state('index', {
+			url: '/index',
+			templateUrl: 'modules/users/views/authentication/index.client.view.jade'
+		}).
 		state('profile', {
 			url: '/settings/profile',
 			templateUrl: 'modules/users/views/settings/edit-profile.client.view.jade'
@@ -23,12 +31,7 @@ angular.module('users').config(['$stateProvider',
 		}).
 		state('signup', {
 			url: '/signup',
-			templateUrl: 'modules/users/views/authentication/signup.client.view.jade',
-			js: ['modules/users/views/authentication/signup.js']
-		}).
-		state('firstsignup', {
-			url: '/firstsignup',
-			templateUrl: 'modules/users/views/authentication/before.signup.client.view.jade'
+			templateUrl: 'modules/users/views/authentication/signup.client.view.jade'
 		}).
 		state('signin', {
 			url: '/signin',

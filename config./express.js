@@ -126,6 +126,9 @@ module.exports = function(db) {
 	app.use('/', index);
 	app.use('/uploads', uploads);
 
+	 
+     // var server = http.createServer(app);
+     // var  io = socketio.listen(server);
 	var server = http.createServer(app);
         var io = socketio.listen(server);
         app.set('socketio', io);
@@ -141,8 +144,10 @@ module.exports = function(db) {
 	    io.on('connection', function (socket) {
 	        //console.log('Someone connected!');
 	        mongoChat.mognolizer(io,socket, users, WhisperChek);
+	        
 	        function updateNicknames() {
 	            io.emit('nickname', Object.keys(users));
+	            
 	        }
 	//disconnect socket
 	        socket.on('disconnect', function (data) {
@@ -151,7 +156,6 @@ module.exports = function(db) {
 	            updateNicknames();
 	        });
 	    });
-
 	
 	// Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
 	app.use(function(err, req, res, next) {

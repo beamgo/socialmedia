@@ -593,3 +593,15 @@ body {
 .fontlarge .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container  h5 {
   font-size: 20px ;
 }
+.button_big{
+  background-color:#E0E0E0;border:0px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding:10px;
+}
+.circle_img{
+  border-radius: 100px;
+  width:200px;
+  height: 200px;
+  margin-bottom:25px;
+}

@@ -37,13 +37,11 @@ html.
             <a data-ng-click="clickNormal()" class="btn font-medium btn-circle whiteblack" title="เปลี่ยนการแสดงผลแบบปกติ">C</span></a>
             <a data-ng-click="clickBlackWhite()" class="btn btn-circle  blackwhite" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว">C</span></a>
 
-          <!--<a href="#" data-theme="yellow" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง">เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง</a>
-          <a href="#" data-theme="normal" title="เปลี่ยนการแสดงผลแบบปกติ">เปลี่ยนการแสดงผลแบบปกติ</a> 
-          <a href="#" data-theme="white" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว">เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว</a> -->
+          
           <div class="clearfix"></div>
         </div>
       </div>
-      <form class="navbar-form navbar-right" role="signin" data-ng-if="!authentication.user"><a class="btn btn-default" data-ui-sref="signin">เข้าสู่ระบบ</a><a class="btn btn-primary" data-ui-sref="signup">ลงทะเบียน</a></form>
+      <form class="navbar-form navbar-right" role="signin" data-ng-if="!authentication.user && isfirstsignup"><a class="btn btn-default" data-ui-sref="signin">เข้าสู่ระบบ</a><a class="btn btn-primary" data-ui-sref="signup">ลงทะเบียน</a></form>
       <form class="navbar-form navbar-right" role="signout" data-ng-if="authentication.user"><a class="btn btn-primary" href="/auth/signout">ออกจากระบบ</a></form>
     </div>
   

@@ -42,16 +42,9 @@ html.
 
       <label class="col-md-4 labelRequest control-label">รหัสผ่าน*</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="password" placeholder="รหัสผ่าน" data-ng-model="credentials.password"/>
+        <input class="form-control" type="password" placeholder="รหัสผ่าน 8-15 ตัวอักษา" data-ng-model="credentials.password"/>
       </div>
       <br><br>
-
-      <label class="col-md-4 labelRequest control-label">ยืนยันรหัสผ่าน*</label>
-      <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="password" placeholder="ยืนยันรหัสผ่าน" />
-      </div>
-      <br><br>
-
 
       <label class="col-md-4 labelRequest control-label">เลขบัตรประจำตัวคนพิการ/เลขบัตรประจำตัวประชาชน*</label>
       <div class="col-md-4 labelRequest control-label">
@@ -87,14 +80,20 @@ html.
 
       <label class="col-md-4 labelRequest control-label">ประเภทงานที่สนใจ</label>
       <div class="col-md-4 labelRequest control-label">
-        <input class="form-control" type="text" placeholder="ประเภทงานที่สนใจ" data-ng-model="credentials.typeofwork"/>
+        <select data-ng-model="credentials.typeofwork.singleSelect" class="form-control" name="typeofwork" id="typeofwork" >
+          <option value='-'>---ประเภทงานที่สนใจ---</option> 
+          <option value='การตลาด'>งานประจำ</option>
+          <option value='การตลาด'>งานพาร์ทไทม์</option>
+          <option value='การตลาด'>งานเป็นกะ</option> 
+          </select>
+        
       </div>
       <br><br>
 
       <label class="col-md-4 labelRequest control-label">ตำแหน่งงานที่สนใจ</label>
       <div class="col-md-4 labelRequest control-label">
         <select data-ng-model="credentials.positionofwork.singleSelect" class="form-control" name="positionofwork" id="positionofwork" >
-        <option value="">---ตำแหน่งงานที่สนใจ---</option> 
+        <option value='-'>---ตำแหน่งงานที่สนใจ---</option> 
         <option value='การตลาด'>การตลาด</option>
         <option value='ประชาสัมพันธ์' >ประชาสัมพันธ์</option>
         <option value='การผลิต' >การผลิต</option>
@@ -133,7 +132,7 @@ html.
       <label class="col-md-4 labelRequest control-label">จังหวัดที่ต้องการทำงาน</label>
       <div class="col-md-4 labelRequest control-label">
         <select data-ng-model="credentials.provinceprefer.singleSelect" class="form-control" name="typeofwork" id="typeofwork" >
-        <option value="">---เลือกจังหวัด---</option> <!-- not selected / blank option -->
+        <option value='-'>---เลือกจังหวัด---</option> <!-- not selected / blank option -->
         <option value='กรุงเทพมหานคร'>กรุงเทพมหานคร</option>
         <option value='กระบี่' >กระบี่</option>
         <option value='กาญจนบุรี' >กาญจนบุรี</option>
@@ -251,7 +250,7 @@ html.
       <label  class="col-md-4 labelRequest control-label">ระดับการศึกษา</label>
         <div class="col-md-4 labelRequest control-label">
           <select data-ng-model="credentials.edulevel.singleSelect"  class="form-control" name="edulevel" id="edulevel" >
-             <option value="">---ระดับการศึกษา---</option> 
+             <option value='-'>---ระดับการศึกษา---</option> 
             <option value='อ่านออกเขียนได้'>อ่านออกเขียนได้</option>
             <option value='ประถมศึกษา'>ประถมศึกษา</option>
             <option value='มัธยมศึกษาตอนต้น(ม.3)'>มัธยมศึกษาตอนต้น(ม.3)</option>

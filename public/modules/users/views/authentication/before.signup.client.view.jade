@@ -1,2 +1,10 @@
 html.
-	hi
+	<br><div class="container" data-ng-controller="AuthenticationController">
+	  <div class="panel panel-default test">
+	      <h4 class="panel-heading" style="text-align:center;">เลือกประเภทการลงทะเบียน</h4>
+	      <div class="panel-body">
+	        <button type="button" class="btn btn-primary btn-block" data-ng-click='redirectToDisabled()'>ลงทะเบียนผู้พิการ</button>
+	        <button type="button" class="btn btn-primary  btn-block" data-ng-click='redirectToCompany()'>ลงทะเบียนผู้ประกอบการ</button>
+	      </div>
+	  </div>
+	</div>

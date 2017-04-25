@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Simon Lackmann">
+<meta name="HandheldFriendly" content="TRUE">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!--MOBILE WEB APP VIEW-->
+<link rel="apple-touch-icon" href="apple_icon.png"/>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link href="modules/core/css/bootstrap.css" rel="stylesheet">
+<link href="modules/core/css/style.css" rel="stylesheet">
+ <!-- Custom Fonts -->
+   <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+<!--END MWV-->
+
+<title></title>
+
+
+<!--FAVICON-->
+
+
+
+<!--SERVER-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.css">
+
+<!--CSS MAIN-->
+<link rel="stylesheet" href="/modules/core/css/main.css"/>
+
+<!--CSS ANIMATE-->
+<link rel="stylesheet" href="/modules/core/css/animate.min.css"/>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <!-- Brand and toggle get grouped for better mobile display-->
+
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <img style='width:70px; height:50px;' src='/img/logo.png'></img>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling-->
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-left">
+ 
+      </ul>
+      <div class="nav navbar-nav navbar-right" style="text-align:right;">
+        <div style="font-size: 14px" id="divFontSize">
+          ปรับขนาดตัวอักษร 
+          <a data-ng-click="fontSmall()" class="btn font-small btn-circle whiteblack " title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง">ก</a>
+          <a data-ng-click="fontNormal()" class="btn font-medium btn-circle whiteblack " style="line-height:1;" title="เปลี่ยนการแสดงผลแบบปกติ">ก</span></a>
+          <a data-ng-click="fontLarge()" class="btn  btn-circle  whiteblack font-large " style="line-height:0.7;" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว">ก</span></a>
+          
+          
+          <div class="clearfix"></div>
+        </div>
+        <div style="font-size: 14px" id="divTheme">
+          ปรับแต่งรูปแบบการแสดงผล 
+            <a data-ng-click="clickBlackYellow()"   class="btn btn-circle blackyellow" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีเหลือง">C</a>
+            <a data-ng-click="clickNormal()" class="btn font-medium btn-circle whiteblack" title="เปลี่ยนการแสดงผลแบบปกติ">C</span></a>
+            <a data-ng-click="clickBlackWhite()" class="btn btn-circle  blackwhite" title="เปลี่ยนการแสดงผลพื้นหลังสีดำตัวหนังสือสีขาว">C</span></a>
+
+          
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      
+      <form class="navbar-form navbar-right" role="signout"><a class="btn btn-primary" href="/auth/signout">ออกจากระบบ</a></form>
+    </div>
+  
+  </div>
+  </nav>
+  <br><br><br>
+<!-- recognize user-->
+<div class="recognize-user"></div>
+
+
+<!--MESSAGE OUTPUT-->
+<div class='ui tertiary compact segment chatty'>
+<span class="desktop-header">
+<div style="text-align: center; margin: 0"><h3>ห้องสนทนา</h3></div>
+<h4 style="margin: 0" class="ui horizontal header divider">
+    <i class="comment icon"></i>
+</h4>
+</span>
+
+<div class="ui comments messages">
+    <div id="preloader" style="text-align: center"></div>
+</div>
+
+<!--space-->
+<div class="space"></div>
+
+</div>
+<!--end ui compact segment-->
+
+<!--FOOTER / FORM INPUT-->
+<footer>
+
+<form class="ui form">
+
+    <!--USERNAME AVATAR-->
+    <div class="two fields">
+
+        <div class="field" style="background: #efefef">
+
+            <form class="ui form">
+                <!--status -->
+                <div class="ui message chat-status alert alert-info" style="color: darkred" role="alert">Status:
+                    <span></span>
+                </div>
+                <ul class="drop">
+
+                    <li class="user">
+                        <div class="menu"> 
+                        <input class="chat" id="ChatName" type="text" name="name" placeholder="username*">
+                        </div>
+                    </li>
+
+                    
+
+                    <!--Reset session storage-->
+                    
+
+                </ul>
+
+
+                <br/>
+                <br/>
+
+                <div style="text-align: center">
+                    <textarea class="msg" type="text" placeholder="พิมพ์ข้อความเพื่อสนทนา" cols="1" rows="1"></textarea>
+
+                    <button id="submit" type="submit" class="ui blue icon button " >
+                        <i class="comment icon"></i>
+                    </button>
+                    <button id="whisper_button" type="submit" class="ui icon blue  button " ><i
+                        class="spy icon"></i>
+                    </button>
+                    <button id="whisperStop" type="submit" class="ui basic icon button" >
+                        <i class="ban icon"></i>
+                    </button>
+
+                </div>
+            </form>
+        </div>
+        <!--end field-->
+
+
+    </div>
+    <!--end two fields-->
+
+</form>
+
+
+
+</footer>
+
+<!--connect to local NodeJs server for socket.io -->
+<script src="socket.io/socket.io.js"></script>
+
+
+
+<!--SERVER-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/semantic.min.js"></script>
+
+<script src="js/jquery.storageapi.min.js"></script>
+<script src="js/chat.js"></script>
+
+<script>
+
+$(function () {
+    $('.dropdown').dropdown();
+
+
+});//document ready end
+
+</script>
+
+</body>
+</html>
