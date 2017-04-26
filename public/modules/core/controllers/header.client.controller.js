@@ -85,9 +85,10 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		$scope.fontLarge = function() {
 			var elements = document.getElementsByTagName("body");
 			if(elements[0].className == 'w3-theme-l5'
-			||elements[0].className == 'w3-theme-l5 blackwhite '
-		   	|| elements[0].className == 'w3-theme-l5 blackyellow '){
+			||elements[0].className == 'w3-theme-l5 blackwhite'
+		   	|| elements[0].className == 'w3-theme-l5 blackyellow'){
 				elements[0].className += " fontlarge" ;
+			console.log('fontlarge');
 			} else if(elements[0].className.match(/(?:^|\s)fontsmall(?!\S)/)){
 				elements[0].className = elements[0].className.replace( /(?:^|\s)fontsmall(?!\S)/g , '' );
 				elements[0].className += " fontlarge" ;

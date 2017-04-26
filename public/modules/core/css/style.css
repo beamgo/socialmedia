@@ -1,3 +1,7 @@
+pre {
+  background-color: white;
+  border: 0px solid white;
+}
 h3.pageName{
   color: #777;
   font-family: 'ThaiSans Neue';
@@ -302,7 +306,8 @@ h3.pageName{
 }
 
 body {
-  background-image: url('../../../img/bg.png');;
+  background-image: url('../../../img/bg.png');
+  background-color: black;
   color: black;
   display: block;
 }
@@ -431,6 +436,15 @@ body {
   background-color: black;
   border: 1px solid white;
 }
+.blackwhite .ng-scope .container .panel,
+.blackwhite .ng-scope .container .panel .panel-heading {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+.blackwhite .ng-scope .container .panel .panel-body .btn {
+  color: white;
+}
 
 /* theme blackyellow */
 .blackyellow .ng-scope .navbar, 
@@ -511,7 +525,15 @@ body {
 .blackyellow .ng-scope .container .signup-form .col-md-4 .form-control ::-webkit-input-placeholder{
   color: yellow;
 }
-
+.blackyellow .ng-scope .container .panel,
+.blackyellow .ng-scope .container .panel .panel-heading {
+  color: yellow;
+  background-color: black;
+  border: 1px solid yellow;
+}
+.blackyellow .ng-scope .container .panel .panel-body .btn {
+  color: yellow;
+}
 /*font small*/
 .fontsmall .ng-scope .navbar, 
 .fontsmall .ng-scope .container .signup-form,
@@ -551,6 +573,19 @@ body {
 }
 .fontsmall .ng-scope .w3-container .w3-row .w3-col .ng-scope .w3-container  h5 {
   font-size: 16px ;
+}
+.fontsmall .ng-scope .container .panel,
+.fontsmall .ng-scope .container .panel .panel-heading {
+  font-size: 18px ;
+}
+.fontsmall .ng-scope .container .panel .panel-body .btn {
+  font-size: 12px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container h3 {
+  font-size: 22px ;
+}
+.fontsmall .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .w3-large{
+  font-size: 13px ;
 }
 
 /*font large*/
@@ -604,4 +639,17 @@ body {
   width:200px;
   height: 200px;
   margin-bottom:25px;
+}
+.fontlarge .ng-scope .container .panel,
+.fontlarge .ng-scope .container .panel .panel-heading {
+  font-size: 22px ;
+}
+.fontlarge .ng-scope .container .panel .panel-body .btn {
+  font-size: 16px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container h3 {
+  font-size: 26px ;
+}
+.fontlarge .ng-scope .w3-container .w3-row .w3-col .w3-card-2 .w3-container .w3-large{
+  font-size: 17px ;
 }

@@ -131,7 +131,7 @@ angular.module('tweets').controller('FeedController', [
             console.log('ArrayVideo'+$scope.ArrayVideo);
             var tweetPicArray = $scope.ArrayFiles;
             var tweetVideo = $scope.ArrayVideo;
-
+           
             $scope.timeline.push({
                 name: name,
                 screenName: screenName,

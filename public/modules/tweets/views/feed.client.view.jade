@@ -92,7 +92,7 @@ html.
             <h3><a href="#!/user.jade">{{ tweet.name }}</a></h3>
             <h5>@{{ tweet.screenName }}<h5>
             <hr class="w3-clear">
-            <div class="tweet-text">{{ tweet.tweetText }}</div>
+            <div class="tweet-text"><pre style="font-size:inherit; color:inherit; background-color:inherit;">{{ tweet.tweetText }}</pre></div>
 
               <div class="w3-row-padding" style="margin:0 -16px">
                 <div  ng-repeat="pic in tweet.tweetPic">
@@ -106,7 +106,7 @@ html.
               <br>
             <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-ng-click="replyTo(tweet.screenName,tweet.tweetText)"><i class="fa fa-comment"></i> ตอบกลับ</button>
             <div data-ng-repeat="reply in reply" > 
-              <div ng-show='reply.screenPicture != null' class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+              <div ng-show='reply.screenPicture != null && reply.text == tweet._id' class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
                 <img ng-src="{{reply.screenPicture }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px; height:80px">
                 <h4><a href="user.jade">{{ reply.name }}</a></h4>
                 <div class="tweet-text">{{ reply.tweetText }}</div>
@@ -124,7 +124,7 @@ html.
             <h3><a href="user.jade">{{ tweet.name }}</a></h3>
             <h5>@{{ tweet.screenName }}<h5>
             <hr class="w3-clear">
-            <div class="tweet-text">{{ tweet.tweetText }}</div>
+            <div class="tweet-text"><pre style="font-size:inherit; color:inherit; background-color:inherit;">{{ tweet.tweetText  }}</pre></div>
             <div class="w3-row-padding" style="margin:0 -16px">
                 <div  ng-repeat="pic in tweet.tweetPic">
                   <img class="tweet-pic" ng-src='{{pic}}'></img>
@@ -167,22 +167,6 @@ html.
                 <a style="padding-left:0px; width:100%; max-width:219px;"  class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey"  id="firstTab" data-ng-repeat="user in users" data-ng-click="redirectToChat(user.username,user.userpicture)" >
                   <div class="w3-container">
                     <img align="left" class="w3-round" ng-src="{{user.userpicture}}" style="max-height: 53.1px; width:30%;"><span class=" w3-large">{{user.username}}</span>
-                    
-                    
-                  </div>
-                </a>
-
-
-                <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
-                  <div class="w3-container">
-                    <img align="left" class="w3-round w3-margin-right" src="img/p-half_0002.png" style="width:30%;"><span class=" w3-large">ดาวใจ </span>
-                    
-                    
-                  </div>
-                </a>
-                <a style="padding-left:0px; width:100%; max-width:219px;" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom  w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
-                  <div class="w3-container">
-                    <img align="left" class="w3-round w3-margin-right" src="img/p-half_0003.png" style="width:30%;"><span class=" w3-large">Sira </span>
                     
                     
                   </div>

@@ -78,21 +78,21 @@ html.
       </div>
       <br><br><br>
 
-      <label class="col-md-4 labelRequest control-label">ประเภทงานที่สนใจ</label>
+      <label class="col-md-4 labelRequest control-label" for="typeofwork">ประเภทงานที่สนใจ</label>
       <div class="col-md-4 labelRequest control-label">
-        <select data-ng-model="credentials.typeofwork.singleSelect" class="form-control" name="typeofwork" id="typeofwork" >
+        <select data-ng-model="data.typeofwork" class="form-control" name="typeofwork" id="typeofwork" >
           <option value='-'>---ประเภทงานที่สนใจ---</option> 
-          <option value='การตลาด'>งานประจำ</option>
-          <option value='การตลาด'>งานพาร์ทไทม์</option>
-          <option value='การตลาด'>งานเป็นกะ</option> 
+          <option value='งานประจำ'>งานประจำ</option>
+          <option value='งานพาร์ทไทม์'>งานพาร์ทไทม์</option>
+          <option value='งานเป็นกะ'>งานเป็นกะ</option> 
           </select>
-        
+      
       </div>
       <br><br>
 
-      <label class="col-md-4 labelRequest control-label">ตำแหน่งงานที่สนใจ</label>
+      <label class="col-md-4 labelRequest control-label" for="positionofwork">ตำแหน่งงานที่สนใจ</label>
       <div class="col-md-4 labelRequest control-label">
-        <select data-ng-model="credentials.positionofwork.singleSelect" class="form-control" name="positionofwork" id="positionofwork" >
+        <select data-ng-model="data.positionofwork" class="form-control" name="positionofwork" id="positionofwork" >
         <option value='-'>---ตำแหน่งงานที่สนใจ---</option> 
         <option value='การตลาด'>การตลาด</option>
         <option value='ประชาสัมพันธ์' >ประชาสัมพันธ์</option>
@@ -124,14 +124,14 @@ html.
           <input  class=" form-control" type="text" placeholder="บาท" data-ng-model="credentials.salaryprefer_min" />
         </div><label class="col-md-2">&nbsp; ถึง </label>
         <div style="padding:0px;" class="col-md-2 labelRequest control-label">
-          <input class="form-control" type="text" placeholder="บาท" data-ng-model="credentials.salaryprefer_max"/>
-        </div>
+          <input class="form-control" type="text" placeholder="บาท" data-ng-model="credentials.salaryprefer_max" ng-change='checkErrSalary(credentials.salaryprefer_max,credentials.salaryprefer_min)'/>
+        </div><span>  {{errMessageSalary}}</span>
       </div>
       <br><br>
 
       <label class="col-md-4 labelRequest control-label">จังหวัดที่ต้องการทำงาน</label>
       <div class="col-md-4 labelRequest control-label">
-        <select data-ng-model="credentials.provinceprefer.singleSelect" class="form-control" name="typeofwork" id="typeofwork" >
+        <select data-ng-model="data.provinceprefer" class="form-control" name="typeofwork" id="typeofwork" >
         <option value='-'>---เลือกจังหวัด---</option> <!-- not selected / blank option -->
         <option value='กรุงเทพมหานคร'>กรุงเทพมหานคร</option>
         <option value='กระบี่' >กระบี่</option>
@@ -249,7 +249,7 @@ html.
 
       <label  class="col-md-4 labelRequest control-label">ระดับการศึกษา</label>
         <div class="col-md-4 labelRequest control-label">
-          <select data-ng-model="credentials.edulevel.singleSelect"  class="form-control" name="edulevel" id="edulevel" >
+          <select data-ng-model="data.edulevel"  class="form-control" name="edulevel" id="edulevel" >
              <option value='-'>---ระดับการศึกษา---</option> 
             <option value='อ่านออกเขียนได้'>อ่านออกเขียนได้</option>
             <option value='ประถมศึกษา'>ประถมศึกษา</option>
@@ -323,7 +323,7 @@ html.
         <label  class="col-md-4 labelRequest control-label">ประเภทความพิการ</label>
         <div class="col-md-4 labelRequest control-label">
           <input class="form-control" type="int" placeholder="ประเภทความพิการ" data-ng-model="credentials.distype"/>
-        </div>
+        </div> เช่น พิการทางร่างกาย
         <br><br>
 
         <label  class="col-md-4 labelRequest control-label">รายละเอียดความพิการ</label>

@@ -36,20 +36,35 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 	          
 	    };
 
+		
+
 		$scope.signup = function() {
+
+		if ($scope.data.typeofwork == undefined){
+			$scope.credentials.typeofwork == '';
+			$scope.credentials.positionofwork == '';
+			$scope.credentials.provinceprefer == '';
+			$scope.credentials.edulevel == '';
+		} else {
+			$scope.credentials.typeofwork = $scope.data.typeofwork;
+			$scope.credentials.positionofwork = $scope.data.positionofwork;
+			$scope.credentials.provinceprefer = $scope.data.provinceprefer;
+			$scope.credentials.edulevel = $scope.data.edulevel;
+
+		}
+		$scope.data.positionofwork ='';
+		$scope.data.provinceprefer='';
 			console.log("credentials "+$scope.credentials);
 			console.log("credentials username "+$scope.credentials.username);
+			console.log('$scope.data.positionofwork'+$scope.data.positionofwork);
 			$scope.credentials.userpicture = $scope.userpicture;
-			$scope.credentials.positionofwork = $scope.credentials.positionofwork.singleSelect;
-			$scope.credentials.provinceprefer = $scope.credentials.provinceprefer.singleSelect;
-			$scope.credentials.edulevel = $scope.credentials.edulevel.singleSelect;
+			
 			console.log("credentials "+$scope.credentials.userpicture);
 			$http.post('/auth/signup', $scope.credentials).success(function(response) {
 				// If successful we assign the response to the global user day
 				$scope.authentication.user = response;
-
 				// And redirect to the index page
-				$location.path('/signin');
+				$location.path('/index');
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
@@ -90,6 +105,20 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 	           $scope.errMessage = 'วันเริ่มต้นไม่ควรเกินปัจจุบัน';
 	           return false;
 	        }
+	    };
+	    $scope.checkErrSalary = function(max,min) {
+	    	console.log(typeof max);
+	        $scope.errMessageSalary = '';
+	        var salary_min = parseInt(min);
+	        var salary_max = parseInt(max);
+	        if(salary_min > salary_max){
+	          $scope.errMessageSalary = 'กรอกเงินเดือนไม่ถูกต้อง';
+	          return false;
+	        }if(typeof max == 'number' || typeof min == 'number'){
+	           $scope.errMessageSalary = 'กรอกเฉพาะตัวเลขเท่านั้น';
+	           return false;
+	        }
+	        
 	    };
 
 	    $scope.redirectToDisabled = function() {

@@ -82,7 +82,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
             $location.path('/view/profile');
         };
         $scope.redirectToFeed = function(){
-            $location.path('/');
+            $location.path('/index');
         };
 	}
 ]);
